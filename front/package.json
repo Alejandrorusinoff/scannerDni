@@ -1,0 +1,57 @@
+{
+  "name": "awesomeproject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@freakycoder/react-native-bounceable": "^0.2.5",
+    "@react-navigation/bottom-tabs": "^6.0.7",
+    "@react-navigation/native": "^6.0.4",
+    "@react-navigation/native-stack": "^6.2.2",
+    "@react-navigation/stack": "^6.0.9",
+    "@reduxjs/toolkit": "^1.6.1",
+    "axios": "^0.21.4",
+    "jsonwebtoken": "^8.5.1",
+    "prop-types": "^15.7.2",
+    "qrcode": "^1.4.4",
+    "rc-table": "^7.19.1",
+    "react": "17.0.2",
+    "react-hook-form": "^7.15.0",
+    "react-native": "0.65.1",
+    "react-native-bouncy-checkbox": "^2.1.4",
+    "react-native-camera": "^4.2.1",
+    "react-native-checkbox-group": "^1.0.3",
+    "react-native-customisable-alert": "^0.1.20",
+    "react-native-flash-message": "^0.2.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-ionicons": "^4.6.5",
+    "react-native-permissions": "^2.2.2",
+    "react-native-qrcode-scanner": "^1.5.4",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.8.0",
+    "react-native-table-component": "^1.2.1",
+    "react-native-vector-icons": "^8.1.0",
+    "react-redux": "^7.2.5",
+    "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.0",
+    "react-native-codegen": "^0.0.7",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
