@@ -100,10 +100,16 @@ const Home = () => {
                                     {dni: dni.BuscarEmpleado, organizationId: user.company._id, idEmployee: data._id}, 
                                     {headers: {authorization: `Bearer ${user.token}`}},
                                 )
-                                .then(res => { 
-                                    console.log(res.data)
-                                    navigation.navigate('SingleEmployee', {data}),
-                                    closeAlert()
+                                .then(() => { 
+                                    showAlert({
+                                        title:"El empleado existe",
+                                        message: "Desea agregar datos de covid",
+                                        alertType: 'warning',
+                                        onPress: () => {
+                                            navigation.navigate('CovidEmployeeData1'),
+                                            closeAlert()
+                                        }
+                                    }) 
                                 })
                                 .catch(err => console.log(err))
                             }
