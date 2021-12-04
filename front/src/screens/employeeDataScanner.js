@@ -7,12 +7,14 @@ import axios from 'axios'
 import styles from '../styles/employeeDataStyles';
 
 
-const EmployeeData = ({navigation, route}) => {
+const EmployeeDataScanner = ({navigation, route}) => {
     const user = useSelector(state => state.user)
     const dni = route.params.data.BuscarEmpleado
     const dataScannerDni = route.params.data.arrDNI
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
+            name: dataScannerDni[2],
+            lastName: dataScannerDni[1],
             dni: dni
         }
     })
@@ -165,4 +167,4 @@ const EmployeeData = ({navigation, route}) => {
     )
 }
 
-export default EmployeeData
+export default EmployeeDataScanner

@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Text, TextInput, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native'
 import { useForm, Controller } from "react-hook-form";
 import axios from 'axios'
 import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
-
-
+import styles from '../styles/loginStyles';
 
 const Login = ({navigation}) => {
-    /* const [user, setUser] = useState({}) */
     const { control, handleSubmit, formState: { errors } } = useForm();
-    
-    const dispatch = useDispatch()
     const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
 
     function sendLogin({email,password}) {
         axios.post('http://localhost:3001/api/organization/login', {
@@ -22,7 +19,6 @@ const Login = ({navigation}) => {
         .then(({data}) => dispatch(setUser(data)))
         .catch(err => console.log(err))
     }
-
 
     return(     
         <View style={styles.container}>
@@ -83,46 +79,5 @@ const Login = ({navigation}) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 50,
-        margin: 12,
-        borderWidth: 1,
-        borderRadius: 10,
-        padding: 10,
-        borderColor: 'rgba(0, 0, 121, 0.89)',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 16,
-        padding: 10,
-    },
-    bottonAndText: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 20,
-    },
-    botton: {
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        backgroundColor: '#87cefa',
-        marginTop: '4%'
-    },
-    logo: {
-        flex: 3, 
-        borderWidth: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: 300,
-        borderRadius: 150,
-    },
-    textRequired: {
-        paddingLeft: 15,
-        color: 'red'
-    }
-});
 
 export default Login

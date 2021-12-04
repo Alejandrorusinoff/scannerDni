@@ -7,6 +7,7 @@ import EmployeeData from '../screens/employeeData'
 import CovidEmployeeData1 from '../screens/covidEmployeeData1';
 import CovidEmployeeData2 from '../screens/covidEmployeeData2';
 import QRCodeScanner from '../screens/scanner';
+import EmployeeDataScanner from '../screens/employeeDataScanner';
 import { useSelector } from 'react-redux';
 
 
@@ -48,6 +49,12 @@ const HomeStack = () => {
       <Stack.Screen
         name="EmployeeData"
         component={EmployeeData}
+        options={{ title: 'Complete el formulario'}}
+      />
+
+      <Stack.Screen
+        name="EmployeeDataScanner"
+        component={EmployeeDataScanner}
         options={{ title: 'Complete el formulario'}}
       />
 

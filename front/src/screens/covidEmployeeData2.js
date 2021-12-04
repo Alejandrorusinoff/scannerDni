@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CheckBoxText from '../components/ChecKBoxText/checKBoxText';
-import { setDataCovid } from '../redux/dataCovid';
 import axios from 'axios';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
+import styles from '../styles/covidEmployeeDataStyles2';
 
 const CovidEmployeeData2 = ({navigation, route}) => {
     const [checkboxState0, setCheckboxState0] = React.useState(false);
@@ -34,9 +33,6 @@ const CovidEmployeeData2 = ({navigation, route}) => {
     const dni = useSelector(state => state.employee.employee.dni)
     const employeeId = useSelector(state => state.employee.employee._id)
 
-    console.log("user ---> ",companyId)
-    console.log("route.params.data ---> ", dni, employeeId)
-
     const datos2 = [
         'Trabajo o convivo con una persona que actualmente es caso confirmado de COVID-19',
         'Pasé en los ultimos 14 días al menos de 15 mínutos cerca de una persona que actualmente es caso confirmado COVID-19',
@@ -48,11 +44,6 @@ const CovidEmployeeData2 = ({navigation, route}) => {
         'Tengo alguna enfermedad cardiológica',
         'Tengo alguna condición que baja las defensas',
     ]
-
-    /* function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses) {
-        dispatch(setDataCovid({temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses}))
-        navigation.navigate('Home')
-    } */
 
     function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId) {
         console.log({temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId})
@@ -247,7 +238,7 @@ const CovidEmployeeData2 = ({navigation, route}) => {
                             onPress={handleYesO8}
                             style={{padding: 5}}
                         /> 
-                    <TouchableOpacity style={styles.botton} /* onPress={handleSubmit(onSubmit)} */
+                    <TouchableOpacity style={styles.botton}
                     onPress={() => saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,role0,role1,role2,role3,role4,role5,role6,role7,role8,companyId)}>
                     <Text>Registrar Datos de Covid</Text>
                     </TouchableOpacity>
@@ -256,81 +247,5 @@ const CovidEmployeeData2 = ({navigation, route}) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 50,
-        margin: 12,
-        borderWidth: 1,
-        borderRadius: 10,
-        padding: 10,
-        borderColor: 'rgba(0, 0, 121, 0.89)',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'space-around',
-        marginHorizontal: 16,
-        padding: 10,
-        flexDirection: 'row',
-    },
-    bottonAndText: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 20,
-    },
-    bottonRadio: {
-        padding: 0,
-        borderRadius: 80,
-        alignItems: 'center',
-        backgroundColor: '#87cefa',
-        width: 55,
-        height: 55,
-        borderWidth: 1,
-    },
-    logo: {
-        flex: 3, 
-        borderWidth: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        borderRadius: 150,
-    },
-    textRequired: {
-        paddingLeft: 15,
-        color: 'red'
-    },
-    title1: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 30, 
-        textAlign: 'center'
-    },
-    title2: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 20, 
-    },
-    title3: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 20, 
-        padding: 5,
-    },
-    text: {
-        justifyContent: 'center',
-        fontSize: 18,
-        textAlign: 'center',
-        marginTop: '3%',
-        marginBottom: '3%',
-    },
-    temp1: {
-        fontSize: 40,
-    },
-    temp2: {
-        fontSize: 40,
-    },
-    botton: {
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        backgroundColor: '#87cefa'
-    },
-});
 
 export default CovidEmployeeData2;

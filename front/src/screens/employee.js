@@ -1,24 +1,20 @@
 import React from 'react'
-import {Text, TextInput, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native'
-import { useForm, Controller } from "react-hook-form";
+import {Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import styles from '../styles/employeeStyles';
 
 const Employee = ({allPeople,}) => {
-    /* const {user, employee, allPeople} = useSelector(state => state); */
     const navigation = useNavigation()
     
     function navigationSingleEmployee(dataEmployee) {
         navigation.navigate('SingleEmployee', {data: dataEmployee})
     }
 
-    function search(idEmployee, organization) {
+    /* function search(idEmployee, organization) {
         const result = organization.employees.filter(employee => employee._id == idEmployee)
         console.log(result)
-    }
-
-    console.log('allPeople -------->', allPeople)
+    } */
 
     return( 
         <View>  
@@ -38,71 +34,5 @@ const Employee = ({allPeople,}) => {
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    input: {
-        height: 50,
-        margin: 12,
-        borderWidth: 1,
-        borderRadius: 10,
-        padding: 10,
-        borderColor: 'rgba(0, 0, 121, 0.89)',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 16,
-        padding: 10,
-    },
-    bottonAndText: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 20,
-    },
-    botton: {
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        backgroundColor: '#87cefa',
-        marginTop: '4%'
-    },
-    logo: {
-        flex: 3, 
-        borderWidth: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        borderRadius: 150,
-    },
-    textRequired: {
-        paddingLeft: 15,
-        color: 'red'
-    },
-    title: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 20, textAlign: 'center'
-    },
-    title1: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 30, 
-        textAlign: 'center',
-        marginBottom: '5%',
-    },
-    title3: {
-        color: 'rgba(0, 0, 121, 0.89)', 
-        fontSize: 15, 
-        padding: 0,
-    },
-    img: {
-        flex: 3, 
-        marginTop: '18%', 
-        marginBottom: '18%'
-    },
-    img1: {
-        color: '#6495ed', 
-        textAlign: 'left',
-        alignSelf: 'baseline'
-    }
-});
 
 export default Employee
