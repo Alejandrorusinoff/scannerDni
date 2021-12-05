@@ -8,13 +8,8 @@ const Employee = ({allPeople,}) => {
     const navigation = useNavigation()
     
     function navigationSingleEmployee(dataEmployee) {
-        navigation.navigate('SingleEmployee', {data: dataEmployee})
+        navigation.navigate('SingleEmployeeContainer', {data: dataEmployee})
     }
-
-    /* function search(idEmployee, organization) {
-        const result = organization.employees.filter(employee => employee._id == idEmployee)
-        console.log(result)
-    } */
 
     return( 
         <View>  

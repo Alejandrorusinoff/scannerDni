@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import Login from './src/screens/login';
+import LoginContainer from './src/containers/loginContainer';
 import HomeApp from './src/navigation/homeApp';
 import CustomisableAlert from "react-native-customisable-alert";
 
@@ -13,15 +14,8 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        {token? <HomeApp/>: <Login/>}
+        {token? <HomeApp/>: <LoginContainer/>}
         <CustomisableAlert titleStyle={{fontSize: 18,fontWeight: "bold"}}/>
-        
-        {/* <Stack.Screen name='Login' component={Login} headerShown={false}/>
-        <Stack.Screen name='Home' component={Home}/>
-        <Stack.Screen name='SingleEmployee' component={SingleEmployee}/>
-        <Stack.Screen name='CovidEmployeeData1' component={CovidEmployeeData1}/>
-        <Stack.Screen name='CovidEmployeeData2' component={CovidEmployeeData2}/> */}
-        
       </NavigationContainer>
     </>
   );

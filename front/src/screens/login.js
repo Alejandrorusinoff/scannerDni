@@ -6,22 +6,11 @@ import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/loginStyles';
 
-const Login = ({navigation}) => {
+const Login = ({navigation, sendLogin, user}) => {
     const { control, handleSubmit, formState: { errors } } = useForm();
-    const user = useSelector(state => state.user)
-    const dispatch = useDispatch()
-
-    function sendLogin({email,password}) {
-        axios.post('http://localhost:3001/api/organization/login', {
-            email,
-            password
-        })
-        .then(({data}) => dispatch(setUser(data)))
-        .catch(err => console.log(err))
-    }
 
     return(     
-        <View style={styles.container}>
+        <View>
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.logo} >
                 <Text style={{fontSize: 120, color: 'rgba(0, 0, 121, 0.89)'}}>LOGO</Text>

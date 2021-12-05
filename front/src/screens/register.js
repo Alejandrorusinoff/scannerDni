@@ -4,26 +4,11 @@ import { useForm, Controller } from "react-hook-form";
 import axios from 'axios'
 import styles from '../styles/registerStyles';
 
-const Register = () => {
-    const [register, setRegister] = useState({})
+const Register = ({sendRegister}) => {
     const { control, handleSubmit, formState: { errors } } = useForm();
 
-    function sendRegister({companyHeadquartes,companyName,description,diretion,email,location,password,province}) {
-        axios.post('http://localhost:3001/api/organization/register', {
-            companyHeadquartes,
-            companyName,
-            description,
-            diretion,
-            email,
-            location,
-            password,
-            province
-        }).then(({data}) => setRegister(data))
-        .catch(err => console.log(err))
-    }
-
     return(    
-        <View style={styles.container}>
+        <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
                 <Text style={styles.title}>Complete el formulario con los datos de la Empresa</Text>
                 <View style={{flex: 3}}>

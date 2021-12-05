@@ -5,18 +5,15 @@ import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/scannerStyles';
 
-const ScanScreen = ({route}) => {
-    const [scannerDNI, setScannerDNI] = useState({})
+const ScanScreen = ({ route }) => {
     const [stateFlash, setStateFlash] = useState(false)
-
-    const getDataScanner = route.params.getDataScanner
     const searchEmployeeDNI = route.params.searchEmployeeDNI
     const onSuccess1 = e => {
         let dni = e.data
         let arrDNI = dni.split("@")
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
-
+    
     const flash = () => {
         if(!stateFlash){
             setStateFlash(true)

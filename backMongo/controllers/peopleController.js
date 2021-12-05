@@ -84,7 +84,6 @@ module.exports = {
     covidData: function(req, res) {
         const{ dni, temperature, smell, taste, cough, soreThroat, breathe, diarrhea, headache, vomits, musclePain, peopleCovid, cancer, diabetes, liverDisease, chronicIllness, respiratoryDisease, heartDisease, lowDefenses, employeeId, organizationId, lastDaysPeople } = req.body
         //Buscamos al empleado por su dni
-        console.log("dniBack ----> ", dni)
         EmployeeData.findOne({dni})
         
         .then(people => {

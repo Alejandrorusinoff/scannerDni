@@ -22,16 +22,16 @@ import styles from '../styles/homeStyles';
 const Tab = createBottomTabNavigator();
 
 const Home = () => {
+    const {user, employee, allPeople} = useSelector(state => state);
+    const [refreshing, setRefreshing] = useState(false);
+    const [getScannerDNI, setGetScannerDNI] = useState([])
+    const dispatch = useDispatch();
     const {control, handleSubmit, reset, formState: {errors}} = useForm({
         defaultValues: {
             BuscarEmpleado: '',
         }
     });
 
-    const {user, employee, allPeople} = useSelector(state => state);
-    const [refreshing, setRefreshing] = useState(false);
-    const [getScannerDNI, setGetScannerDNI] = useState([])
-    const dispatch = useDispatch();
 
     /* const wait = (timeout) => {
         return new Promise(resolve => setTimeout(resolve, timeout));
@@ -58,13 +58,13 @@ const Home = () => {
         .then(({data}) => {
             // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj
             if(!data._id){
-                if (dni.arrDNI.length) {
+                if (!!dni.arrDNI.length) {
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
                         alertType: 'warning',
                         onPress: () => {
-                            navigation.navigate('EmployeeDataScanner', {data:dni})
+                            navigation.navigate('EmployeeDataScannerContainer', {data:dni})
                             closeAlert()
                             }
                         }
@@ -76,7 +76,7 @@ const Home = () => {
                         message: "Desea agregar el empleado a la organización?",
                         alertType: 'warning',
                         onPress: () => {
-                            navigation.navigate('EmployeeData', {data:dni})
+                            navigation.navigate('EmployeeDataContainer', {data:dni})
                             closeAlert()
                             }
                         }

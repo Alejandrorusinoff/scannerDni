@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/home';
-import SingleEmployee from '../screens/singleEmployee'
 import Employee from '../screens/employee';
-import EmployeeData from '../screens/employeeData'
+import EmployeeDataContainer from '../containers/employeeDataContainer';
 import CovidEmployeeData1 from '../screens/covidEmployeeData1';
 import CovidEmployeeData2 from '../screens/covidEmployeeData2';
 import QRCodeScanner from '../screens/scanner';
-import EmployeeDataScanner from '../screens/employeeDataScanner';
+import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
+import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
 import { useSelector } from 'react-redux';
-
-
-
   
 const HomeStack = () => {
   const fullName = useSelector(state => state.title)
@@ -40,21 +37,21 @@ const HomeStack = () => {
       />
 
       <Stack.Screen
-        name="SingleEmployee"
-        component={SingleEmployee}
+        name="SingleEmployeeContainer"
+        component={SingleEmployeeContainer}
         /* options={{ title: `${fullName.name} ${fullName.lastName}`}} */
         options={{ title: 'Detalle del Empleado'}}
       />
 
       <Stack.Screen
-        name="EmployeeData"
-        component={EmployeeData}
+        name="EmployeeDataContainer"
+        component={EmployeeDataContainer}
         options={{ title: 'Complete el formulario'}}
       />
 
       <Stack.Screen
-        name="EmployeeDataScanner"
-        component={EmployeeDataScanner}
+        name="EmployeeDataScannerContainer"
+        component={EmployeeDataScannerContainer}
         options={{ title: 'Complete el formulario'}}
       />
 
