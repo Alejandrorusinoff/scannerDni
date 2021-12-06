@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
+import {setAllPeople} from '../redux/allPeople';
 import EmployeeDataScanner from '../screens/employeeDataScanner'
 import styles from '../styles/employeeDataStyles';
 
@@ -24,7 +25,7 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
             organizationId,
         },
         {headers: {authorization: `Bearer ${user.token}`}})
-        .then(({data}) => {console.log(data),dispatch(setEmployee(data)), navigation.navigate('CovidEmployeeData1Container')})
+        .then(({data}) => {dispatch(setEmployee(data)), navigation.navigate('CovidEmployeeData1Container')})
         .catch(err => console.log(err))
     }
 

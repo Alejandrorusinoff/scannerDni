@@ -11,15 +11,13 @@ const ScanScreen = ({ route }) => {
     const onSuccess1 = e => {
         let dni = e.data
         let dataDNI = dni.split("@")
-        console.log(dataDNI)
         let arrDNI = []
         for (let i = 0; i < dataDNI.length; i++) {
             arrDNI.push(dataDNI[i].toLocaleLowerCase());
         }
-        console.log(arrDNI)
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
-    
+
     const flash = () => {
         if(!stateFlash){
             setStateFlash(true)
