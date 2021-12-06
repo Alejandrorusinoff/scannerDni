@@ -5,17 +5,11 @@ import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
 import EmployeeData from '../screens/employeeData';
+import styles from '../styles/employeeDataStyles';
 
 const EmployeeDataContainer = ({navigation, route}) => {
     const user = useSelector(state => state.user)
     const dni = route.params.data.BuscarEmpleado
-    const dataScannerDni = route.params.data.arrDNI
-    const { control, handleSubmit, formState: { errors } } = useForm({
-        defaultValues: {
-            dni: dni
-        }
-    })
-
     const dispatch = useDispatch()
 
     function saveEmployee({name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
@@ -35,8 +29,8 @@ const EmployeeDataContainer = ({navigation, route}) => {
     }
 
     return(    
-        <View>
-            <EmployeeData/>
+        <View style={styles.container}>
+            <EmployeeData saveEmployee={saveEmployee} dni={dni}/>
         </View>
     )
 }

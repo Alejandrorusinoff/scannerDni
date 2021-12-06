@@ -1,6 +1,5 @@
 import React from 'react'
 import { View } from 'react-native'
-import { useForm } from "react-hook-form";
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
@@ -25,7 +24,7 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
             organizationId,
         },
         {headers: {authorization: `Bearer ${user.token}`}})
-        .then(({data}) => {dispatch(setEmployee(data)), navigation.navigate('CovidEmployeeData1')})
+        .then(({data}) => {console.log(data),dispatch(setEmployee(data)), navigation.navigate('CovidEmployeeData1Container')})
         .catch(err => console.log(err))
     }
 

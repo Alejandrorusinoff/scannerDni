@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import CovidEmployeeData2 from '../screens/covidEmployeeData2';
+import styles from '../styles/covidEmployeeDataStyles2';
 
 const CovidEmployeeData2Container = ({navigation, route}) => {
     const [checkboxState0, setCheckboxState0] = React.useState(false);
@@ -178,8 +179,10 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
     };
 
     return (
-        <View>
-            <CovidEmployeeData2/>
+        <View style={styles.container}>
+            <CovidEmployeeData2 temperature={temperature} smell={smell} taste={taste} cough={cough} soreThroat={soreThroat} breathe={breathe} diarrhea={diarrhea} headache={headache} vomits={vomits} musclePain={musclePain} checkboxState0={checkboxState0} checkboxState1={checkboxState1} checkboxState2={checkboxState2} checkboxState3={checkboxState3} checkboxState4={checkboxState4} checkboxState5={checkboxState5} checkboxState6={checkboxState6} checkboxState7={checkboxState7} checkboxState8={checkboxState8} companyId={companyId} dni={dni} employeeId={employeeId} role0={role0} role1={role1} role2={role2} role3={role3} role4={role4} role5={role5} role6={role6} role7={role7} role8={role8} datos2={datos2} saveDataCovidDataBase={saveDataCovidDataBase} handleYesOp0={handleYesOp0} handleYesOp1={handleYesOp1} handleYesOp2={handleYesOp2} handleYesOp3={handleYesOp3} handleYesOp4={handleYesOp4}
+            handleYesOp5={handleYesOp5} handleYesOp6={handleYesOp6} handleYesOp7={handleYesOp7} handleYesO8={handleYesO8}
+            />
         </View>
     );
 }

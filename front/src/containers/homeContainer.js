@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import axios from 'axios';
 import Home from '../screens/home';
-
+import styles from '../styles/homeStyles';
 
 const Tab = createBottomTabNavigator();
 
@@ -56,7 +56,7 @@ const HomeContainer = () => {
                         message: "Desea agregar el empleado a la organización?",
                         alertType: 'warning',
                         onPress: () => {
-                            navigation.navigate('EmployeeDataScanner', {data:dni})
+                            navigation.navigate('EmployeeDataScannerContainer', {data:dni})
                             closeAlert()
                             }
                         }
@@ -68,7 +68,7 @@ const HomeContainer = () => {
                         message: "Desea agregar el empleado a la organización?",
                         alertType: 'warning',
                         onPress: () => {
-                            navigation.navigate('EmployeeData', {data:dni})
+                            navigation.navigate('EmployeeDataContainer', {data:dni})
                             closeAlert()
                             }
                         }
@@ -86,7 +86,7 @@ const HomeContainer = () => {
                             message: "Desea agregar datos de covid",
                             alertType: 'warning',
                             onPress: () => {
-                                navigation.navigate('CovidEmployeeData1',{dni, data}),
+                                navigation.navigate('CovidEmployeeData1Container',{dni, data}),
                                 closeAlert()
                             }
                         }) 
@@ -108,7 +108,7 @@ const HomeContainer = () => {
                                         message: "Desea agregar datos de covid",
                                         alertType: 'warning',
                                         onPress: () => {
-                                            navigation.navigate('CovidEmployeeData1'),
+                                            navigation.navigate('CovidEmployeeData1Container'),
                                             closeAlert()
                                         }
                                     }) 
@@ -135,8 +135,8 @@ const HomeContainer = () => {
     },[user.company.employees.length])
 
     return (
-        <View>
-            <Home/>
+        <View style={styles.container}>
+            <Home user={user} allPeople={allPeople} refreshing={refreshing} onRefresh={onRefresh} searchEmployeeDNI={searchEmployeeDNI} close={close}/>
         </View>
     );
 };

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/home';
+import HomeContainer from '../containers/homeContainer';
 import Employee from '../screens/employee';
 import EmployeeDataContainer from '../containers/employeeDataContainer';
-import CovidEmployeeData1 from '../screens/covidEmployeeData1';
-import CovidEmployeeData2 from '../screens/covidEmployeeData2';
+import CovidEmployeeData1Container from '../containers/covidEmployeeData1Container';
+import CovidEmployeeData2Container from '../containers/covidEmployeeData2Container';
 import QRCodeScanner from '../screens/scanner';
 import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
 import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
@@ -16,7 +17,7 @@ const HomeStack = () => {
   /* console.log('title ', fullName) */
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeContainer"
       /* screenOptions={{
         headerStyle: { backgroundColor: '#BFD732' },
         headerTintColor: '#F5F6F7',
@@ -27,8 +28,8 @@ const HomeStack = () => {
       }} */
     >
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="HomeContainer"
+        component={HomeContainer}
       />
       
       <Stack.Screen
@@ -56,14 +57,14 @@ const HomeStack = () => {
       />
 
       <Stack.Screen
-        name="CovidEmployeeData1"
-        component={CovidEmployeeData1}
+        name="CovidEmployeeData1Container"
+        component={CovidEmployeeData1Container}
         options={{ title: 'Complete el formulario'}}
       />
 
       <Stack.Screen
-        name="CovidEmployeeData2"
-        component={CovidEmployeeData2}
+        name="CovidEmployeeData2Container"
+        component={CovidEmployeeData2Container}
         options={{ title: 'Complete el formulario'}}
       />
 

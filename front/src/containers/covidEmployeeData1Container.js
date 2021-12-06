@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import CovidEmployeeData1 from '../screens/covidEmployeeData1';
+import styles from '../styles/covidEmployeeData1Styles';
 
 const CovidEmployeeData1Container = ({navigation, route}) => {
   const [temperature, setTemperature] = React.useState(36)
@@ -233,7 +234,7 @@ const CovidEmployeeData1Container = ({navigation, route}) => {
 
   function saveDataCovidStore(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain) {
     if (temperature && smell && taste && cough && soreThroat && breathe && diarrhea && headache && vomits && musclePain) {
-      navigation.navigate('CovidEmployeeData2',{temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain})
+      navigation.navigate('CovidEmployeeData2Container',{temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain})
     }
     else{
       showAlert({
@@ -248,8 +249,12 @@ const CovidEmployeeData1Container = ({navigation, route}) => {
   }
 
   return (
-    <View>
-      <CovidEmployeeData1/>
+    <View style={styles.container}>
+      <CovidEmployeeData1 temperature={temperature} boxUno1={boxUno1} boxDos1={boxDos1} boxUno2={boxUno2} boxDos2={boxDos2} boxUno3={boxUno3} boxDos3={boxDos3} boxUno4={boxUno4} boxDos4={boxDos4} boxUno5={boxUno5} boxDos5={boxDos5} boxUno6={boxUno6} boxDos6={boxDos6} boxUno7={boxUno7} boxDos7={boxDos7} boxUno8={boxUno8} boxDos8={boxDos8} boxUno9={boxUno9} boxDos9={boxDos9} datos1={datos1} handleYesOp1={handleYesOp1} handleNotOp1={handleNotOp1} handleYesOp2={handleYesOp2} handleNotOp2={handleNotOp2} handleYesOp3={handleYesOp3} handleNotOp3={handleNotOp3} handleYesOp4={handleYesOp4} handleNotOp4={handleNotOp4} handleYesOp5={handleYesOp5} handleNotOp5={handleNotOp5} handleYesOp6={handleYesOp6}
+      handleNotOp6={handleNotOp6} handleYesOp7={handleYesOp7} handleNotOp7={handleNotOp7}
+      handleYesOp8={handleYesOp8} handleNotOp8={handleNotOp8} handleYesOp9={handleYesOp9}
+      handleNotOp9={handleNotOp9} trunc={trunc} suma={suma} resta={resta} saveDataCovidStore={saveDataCovidStore} role1={role1} role2={role2} role3={role3} role4={role4} role5={role5}role6={role6} role7={role7} role8={role8} role9={role9}
+      />
     </View>
   );  
 };

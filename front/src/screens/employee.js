@@ -1,15 +1,9 @@
 import React from 'react'
 import {Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/employeeStyles';
 
-const Employee = ({allPeople,}) => {
-    const navigation = useNavigation()
-    
-    function navigationSingleEmployee(dataEmployee) {
-        navigation.navigate('SingleEmployeeContainer', {data: dataEmployee})
-    }
+const Employee = ({allPeople, navigationSingleEmployee}) => {
 
     return( 
         <View>  
