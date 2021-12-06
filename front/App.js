@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
-import Login from './src/screens/login';
 import LoginContainer from './src/containers/loginContainer';
 import HomeApp from './src/navigation/homeApp';
 import CustomisableAlert from "react-native-customisable-alert";

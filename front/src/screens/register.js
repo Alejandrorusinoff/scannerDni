@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Text, TextInput, View, TouchableOpacity, ScrollView} from 'react-native'
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/registerStyles';

@@ -1,6 +1,5 @@
 import React from 'react'
-import {Text, TextInput, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native'
-import { useForm, Controller } from "react-hook-form";
+import { View } from 'react-native'
 import axios from 'axios'
 import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';

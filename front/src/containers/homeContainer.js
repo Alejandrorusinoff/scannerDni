@@ -14,20 +14,10 @@ import styles from '../styles/homeStyles';
 const Tab = createBottomTabNavigator();
 
 const HomeContainer = () => {
-    const {user, employee, allPeople} = useSelector(state => state);
+    const {user, allPeople} = useSelector(state => state);
     const [refreshing, setRefreshing] = useState(false);
-    const [getScannerDNI, setGetScannerDNI] = useState([])
     const dispatch = useDispatch();
-    const {control, handleSubmit, reset, formState: {errors}} = useForm({
-        defaultValues: {
-            BuscarEmpleado: '',
-        }
-    });
 
-
-    /* const wait = (timeout) => {
-        return new Promise(resolve => setTimeout(resolve, timeout));
-    } */
     const navigation = useNavigation()
     
     const onRefresh = useCallback(() => {
@@ -48,9 +38,11 @@ const HomeContainer = () => {
             {headers: {authorization: `Bearer ${user.token}`}},
         )
         .then(({data}) => {
-            // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj
+            // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj Array.isArray(arrDNI) !!dni.arrDNI.length dni.arrDNI[0]
+            console.log(dni)
             if(!data._id){
                 if (!!dni.arrDNI.length) {
+                    console.log(dni)
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
@@ -63,6 +55,7 @@ const HomeContainer = () => {
                     )
                 }
                 else {
+                    console.log("else ----> ",dni)
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
@@ -121,6 +114,7 @@ const HomeContainer = () => {
             }
         })
         .then(() => reset({BuscarEmpleado: ''})) 
+        .catch(err => console.log(err))
     }
 
     function close() {

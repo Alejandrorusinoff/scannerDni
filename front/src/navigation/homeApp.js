@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../screens/home';
 import HomeContainer from '../containers/homeContainer';
 import Employee from '../screens/employee';
 import EmployeeDataContainer from '../containers/employeeDataContainer';
@@ -10,6 +9,7 @@ import QRCodeScanner from '../screens/scanner';
 import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
 import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
 import { useSelector } from 'react-redux';
+import EmployeeContainer from '../containers/employeeContainer';
   
 const HomeStack = () => {
   const fullName = useSelector(state => state.title)
@@ -33,8 +33,8 @@ const HomeStack = () => {
       />
       
       <Stack.Screen
-        name="Employee"
-        component={Employee}
+        name="EmployeeContainer"
+        component={EmployeeContainer}
       />
 
       <Stack.Screen

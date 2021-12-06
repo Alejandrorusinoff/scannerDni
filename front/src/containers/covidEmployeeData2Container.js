@@ -46,7 +46,6 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
     ]
 
     function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId) {
-        console.log({temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId})
         axios.post('http://localhost:3001/api/employee/covidData',
         {
             temperature,
@@ -79,7 +78,7 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
                 message: "Datos cargados exitosamente",
                 alertType: 'success',
                 onPress: () => {
-                    navigation.navigate('Home')
+                    navigation.navigate('HomeContainer')
                   closeAlert()
                 }
             })

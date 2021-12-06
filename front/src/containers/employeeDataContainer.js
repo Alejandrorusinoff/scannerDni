@@ -1,6 +1,5 @@
 import React from 'react'
 import { View } from 'react-native'
-import { useForm } from "react-hook-form";
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
