@@ -75,7 +75,7 @@ module.exports = {
                 employee.organizationId.push(empresa)
                 empresa.save()
                 employee.save()
-                res.json('Usuario agregado a la organizacion')
+                res.json({msj: 'Usuario agregado a la organizacion', employee})
             }).catch(err => res.json(err))  
         })
     },

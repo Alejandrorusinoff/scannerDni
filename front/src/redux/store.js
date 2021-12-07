@@ -6,6 +6,7 @@ import allPeopleReducer from './allPeople'
 import titleReducer from './title'
 import dataCovidReducer from './dataCovid'
 import scannerDNIReducer from './scannerDNI'
+import dataVinculationReducer from './dataVinculation'
 
 const store = configureStore({
     middleware:(getDefaultMiddleware)=> getDefaultMiddleware().concat(logger),
@@ -16,6 +17,7 @@ const store = configureStore({
         title: titleReducer,
         dataCovid: dataCovidReducer,
         scannerDNI: scannerDNIReducer,
+        /* dataVinculation: dataVinculationReducer, */
     }
 })
 

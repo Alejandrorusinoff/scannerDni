@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import EmployeeContainer from '../containers/employeeContainer';
 import styles from '../styles/homeStyles';
 
-const Home = ({user, allPeople, refreshing, onRefresh, searchEmployeeDNI, close}) => {
+const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear}) => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm({
         defaultValues: {
             BuscarEmpleado: '',
@@ -67,7 +67,7 @@ const Home = ({user, allPeople, refreshing, onRefresh, searchEmployeeDNI, close}
                     }
                 >
                     <View>
-                        {user.company.employees.length ? <EmployeeContainer allPeople={allPeople}/>: null}
+                        {user.company.employees.length ? <EmployeeContainer/>: null}
                     </View>
                 </ScrollView>
             </View>

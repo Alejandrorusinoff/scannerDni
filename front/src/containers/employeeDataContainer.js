@@ -23,7 +23,10 @@ const EmployeeDataContainer = ({navigation, route}) => {
             organizationId,
         },
         {headers: {authorization: `Bearer ${user.token}`}})
-        .then(({data}) => {dispatch(setEmployee(data)), navigation.navigate('CovidEmployeeData1')})
+        .then(({data}) => {
+            dispatch(setEmployee(data)), 
+            navigation.navigate('CovidEmployeeData1Container')
+        })
         .catch(err => console.log(err))
     }
 

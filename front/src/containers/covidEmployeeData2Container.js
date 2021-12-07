@@ -27,7 +27,9 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
     const [role8, setRole8] = useState('no');
     
     const {temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,} = route.params
-
+    
+    const empleado = useSelector(state => state)
+    console.log(empleado)
     const companyId = useSelector(state => state.user.company._id);
     const {user} = useSelector(state => state);
     const dni = useSelector(state => state.employee.employee.dni)

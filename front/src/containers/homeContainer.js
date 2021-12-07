@@ -5,8 +5,10 @@ import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../redux/user';
 import {setAllPeople} from '../redux/allPeople';
+import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
+import { postSearchEmployeeByDNI } from '../axiosRequests/request'
 import axios from 'axios';
 import Home from '../screens/home';
 import styles from '../styles/homeStyles';
@@ -14,7 +16,12 @@ import styles from '../styles/homeStyles';
 const Tab = createBottomTabNavigator();
 
 const HomeContainer = () => {
-    const {user, allPeople} = useSelector(state => state);
+    const {control, handleSubmit, reset, formState: {errors}} = useForm({
+        defaultValues: {
+            BuscarEmpleado: '',
+        }
+    });
+    const {user} = useSelector(state => state);
     const [refreshing, setRefreshing] = useState(false);
     const dispatch = useDispatch();
 
@@ -30,19 +37,18 @@ const HomeContainer = () => {
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
-        axios.post('http://localhost:3001/api/employee/searchEmployeeByDNI',
+        /* axios.post('http://localhost:3001/api/employee/searchEmployeeByDNI',
             {
                 dni: dni.BuscarEmpleado,
                 organizationId: user.company._id
             },
             {headers: {authorization: `Bearer ${user.token}`}},
-        )
+        ) */
+        postSearchEmployeeByDNI(dni,user)
         .then(({data}) => {
             // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj Array.isArray(arrDNI) !!dni.arrDNI.length dni.arrDNI[0]
-            console.log(dni)
             if(!data._id){
-                if (!!dni.arrDNI.length) {
-                    console.log(dni)
+                if (Array.isArray(dni.arrDNI)) {
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
@@ -55,7 +61,6 @@ const HomeContainer = () => {
                     )
                 }
                 else {
-                    console.log("else ----> ",dni)
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
@@ -79,6 +84,7 @@ const HomeContainer = () => {
                             message: "Desea agregar datos de covid",
                             alertType: 'warning',
                             onPress: () => {
+                                dispatch(setEmployee({employee: data})), 
                                 navigation.navigate('CovidEmployeeData1Container',{dni, data}),
                                 closeAlert()
                             }
@@ -101,6 +107,7 @@ const HomeContainer = () => {
                                         message: "Desea agregar datos de covid",
                                         alertType: 'warning',
                                         onPress: () => {
+                                            dispatch(setEmployee({employee: data})), 
                                             navigation.navigate('CovidEmployeeData1Container'),
                                             closeAlert()
                                         }
@@ -130,7 +137,7 @@ const HomeContainer = () => {
 
     return (
         <View style={styles.container}>
-            <Home user={user} allPeople={allPeople} refreshing={refreshing} onRefresh={onRefresh} searchEmployeeDNI={searchEmployeeDNI} close={close}/>
+            <Home user={user} refreshing={refreshing} onRefresh={onRefresh} searchEmployeeDNI={searchEmployeeDNI} close={close}/>
         </View>
     );
 };
