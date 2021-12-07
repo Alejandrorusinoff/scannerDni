@@ -2,6 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
+import { postEmployeeAdd } from '../axiosRequests/request'
 import axios from 'axios'
 import EmployeeData from '../screens/employeeData';
 import styles from '../styles/employeeDataStyles';
@@ -12,7 +13,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const dispatch = useDispatch()
 
     function saveEmployee({name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
-        axios.post('http://localhost:3001/api/employee/add',
+        /* axios.post('http://localhost:3001/api/employee/add',
         {
             name, 
             lastName, 
@@ -22,7 +23,8 @@ const EmployeeDataContainer = ({navigation, route}) => {
             organizationName,
             organizationId,
         },
-        {headers: {authorization: `Bearer ${user.token}`}})
+        {headers: {authorization: `Bearer ${user.token}`}}) */
+        postEmployeeAdd(name, lastName, dni, age, diretion, organizationName, organizationId, user)
         .then(({data}) => {
             dispatch(setEmployee(data)), 
             navigation.navigate('CovidEmployeeData1Container')

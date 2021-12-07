@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import axios from 'axios'
 import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
+import { postLogin } from '../axiosRequests/request'
 import Login from '../screens/login'
 import styles from '../styles/loginStyles';
 
@@ -11,10 +12,11 @@ const LoginContainer = ({navigation}) => {
     const dispatch = useDispatch()
 
     function sendLogin({email,password}) {
-        axios.post('http://localhost:3001/api/organization/login', {
+        /* axios.post('http://localhost:3001/api/organization/login', {
             email,
             password
-        })
+        }) */
+        postLogin(email, password)
         .then(({data}) => dispatch(setUser(data)))
         .catch(err => console.log(err))
     }

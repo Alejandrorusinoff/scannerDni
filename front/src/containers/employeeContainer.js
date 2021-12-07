@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 const EmployeeContainer = () => {
     const allPeople = useSelector(state => state.allPeople)
     const navigation = useNavigation()
-    /* console.log(allPeople) */
     
     function navigationSingleEmployee(dataEmployee) {
         navigation.navigate('SingleEmployeeContainer', {data: dataEmployee})

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
+import {postCovidData} from '../axiosRequests/request'
 import axios from 'axios';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import CovidEmployeeData2 from '../screens/covidEmployeeData2';
@@ -47,8 +48,8 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
         'Tengo alguna condición que baja las defensas',
     ]
 
-    function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId) {
-        axios.post('http://localhost:3001/api/employee/covidData',
+    function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId, user) {
+        /* axios.post('http://localhost:3001/api/employee/covidData',
         {
             temperature,
             smell,
@@ -73,7 +74,8 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
             lowDefenses,
             organizationId,
         },
-        {headers: {authorization: `Bearer ${user.token}`}})
+        {headers: {authorization: `Bearer ${user.token}`}}) */
+        postCovidData(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId, user)
         .then(() => {
             showAlert({
                 title:"Exelente",

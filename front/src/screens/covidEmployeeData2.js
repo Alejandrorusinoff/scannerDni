@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import CheckBoxText from '../components/ChecKBoxText/checKBoxText';
+import { useSelector } from 'react-redux';
 import styles from '../styles/covidEmployeeDataStyles2';
 
 const CovidEmployeeData2 = ({temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain, checkboxState0, checkboxState1, checkboxState2, checkboxState3, checkboxState4, checkboxState5, checkboxState6, checkboxState7, checkboxState8, companyId, dni, employeeId, role0, role1, role2, role3, role4, role5, role6, role7, role8, datos2, saveDataCovidDataBase, handleYesOp0, handleYesOp1, handleYesOp2, handleYesOp3, handleYesOp4, handleYesOp5, handleYesOp6, handleYesOp7, handleYesO8}) => {
+    const {user} = useSelector(state => state);
    
     return (
         <View>
@@ -66,7 +68,7 @@ const CovidEmployeeData2 = ({temperature,smell,taste,cough,soreThroat,breathe,di
                             style={{padding: 5}}
                         /> 
                     <TouchableOpacity style={styles.botton}
-                    onPress={() => saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,role0,role1,role2,role3,role4,role5,role6,role7,role8,companyId)}>
+                    onPress={() => saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,role0,role1,role2,role3,role4,role5,role6,role7,role8,companyId,user)}>
                     <Text>Registrar Datos de Covid</Text>
                     </TouchableOpacity>
                 </View>

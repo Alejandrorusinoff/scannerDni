@@ -8,7 +8,7 @@ import {setAllPeople} from '../redux/allPeople';
 import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
-import { postSearchEmployeeByDNI } from '../axiosRequests/request'
+import { postSearchEmployeeByDNI, postAssociateEmployee, postOrganizationEmployee } from '../axiosRequests/request'
 import axios from 'axios';
 import Home from '../screens/home';
 import styles from '../styles/homeStyles';
@@ -28,10 +28,12 @@ const HomeContainer = () => {
     const navigation = useNavigation()
     
     const onRefresh = useCallback(() => {
-        axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
+        /* axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
         {organizationId: user.company._id}, 
         {headers: {authorization: `Bearer ${user.token}`},
-        }).then(({data}) => dispatch(setAllPeople(data)));
+        }) */
+        postOrganizationEmployee(user)
+        .then(({data}) => dispatch(setAllPeople(data)));
     }, []);
 
 
@@ -97,10 +99,11 @@ const HomeContainer = () => {
                             message: "Desea vincular el empleado a la organización?",
                             alertType: 'warning',
                             onPress: () => {
-                                axios.post('http://localhost:3001/api/employee/associateEmployee', 
+                                /* axios.post('http://localhost:3001/api/employee/associateEmployee', 
                                     {dni: dni.BuscarEmpleado, organizationId: user.company._id, idEmployee: data._id}, 
                                     {headers: {authorization: `Bearer ${user.token}`}},
-                                )
+                                ) */
+                                postAssociateEmployee(dni, user, data)
                                 .then(() => { 
                                     showAlert({
                                         title:"El empleado existe",
@@ -129,10 +132,12 @@ const HomeContainer = () => {
     }
 
     useEffect(() => {
-        axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
+        /* axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
         {organizationId: user.company._id}, 
         {headers: {authorization: `Bearer ${user.token}`},
-    }).then(({data}) => dispatch(setAllPeople(data)));
+    }) */
+    postOrganizationEmployee(user)
+    .then(({data}) => dispatch(setAllPeople(data)));
     },[user.company.employees.length])
 
     return (
