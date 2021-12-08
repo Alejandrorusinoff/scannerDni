@@ -9,7 +9,6 @@ import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import { postSearchEmployeeByDNI, postAssociateEmployee, postOrganizationEmployee } from '../axiosRequests/request'
-import axios from 'axios';
 import Home from '../screens/home';
 import styles from '../styles/homeStyles';
 
@@ -28,10 +27,6 @@ const HomeContainer = () => {
     const navigation = useNavigation()
     
     const onRefresh = useCallback(() => {
-        /* axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
-        {organizationId: user.company._id}, 
-        {headers: {authorization: `Bearer ${user.token}`},
-        }) */
         postOrganizationEmployee(user)
         .then(({data}) => dispatch(setAllPeople(data)));
     }, []);
@@ -39,16 +34,9 @@ const HomeContainer = () => {
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
-        /* axios.post('http://localhost:3001/api/employee/searchEmployeeByDNI',
-            {
-                dni: dni.BuscarEmpleado,
-                organizationId: user.company._id
-            },
-            {headers: {authorization: `Bearer ${user.token}`}},
-        ) */
         postSearchEmployeeByDNI(dni,user)
         .then(({data}) => {
-            // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj Array.isArray(arrDNI) !!dni.arrDNI.length dni.arrDNI[0]
+            // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj A
             if(!data._id){
                 if (Array.isArray(dni.arrDNI)) {
                     showAlert({
@@ -99,10 +87,6 @@ const HomeContainer = () => {
                             message: "Desea vincular el empleado a la organización?",
                             alertType: 'warning',
                             onPress: () => {
-                                /* axios.post('http://localhost:3001/api/employee/associateEmployee', 
-                                    {dni: dni.BuscarEmpleado, organizationId: user.company._id, idEmployee: data._id}, 
-                                    {headers: {authorization: `Bearer ${user.token}`}},
-                                ) */
                                 postAssociateEmployee(dni, user, data)
                                 .then(() => { 
                                     showAlert({
@@ -132,10 +116,6 @@ const HomeContainer = () => {
     }
 
     useEffect(() => {
-        /* axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
-        {organizationId: user.company._id}, 
-        {headers: {authorization: `Bearer ${user.token}`},
-    }) */
     postOrganizationEmployee(user)
     .then(({data}) => dispatch(setAllPeople(data)));
     },[user.company.employees.length])

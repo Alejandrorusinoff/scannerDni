@@ -3,7 +3,6 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux';
 import { setTitle } from '../redux/title';
 import { getSearchAllEmployeeCovidData } from '../axiosRequests/request'
-import axios from 'axios';
 import SingleEmployee from '../screens/singleEmployee'
 import styles from '../styles/singleEmployeeStyles';
 
@@ -17,9 +16,6 @@ const SingleEmployeeContainer = ({route}) => {
 
     useEffect(() => {
         dispatch(setTitle({name, lastName}))
-        /* axios.get(`http://localhost:3001/api/employee/searchAllEmployeeCovidData/${_id}`,
-        {headers: {authorization: `Bearer ${user.token}`}},
-        ) */
         getSearchAllEmployeeCovidData(_id, user)
         .then(({data}) => {
             setDataCovid(data.dataCovid), 
