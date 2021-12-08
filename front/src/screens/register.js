@@ -10,8 +10,7 @@ const Register = ({sendRegister}) => {
         <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
                 <Text style={styles.title}>Complete el formulario con los datos de la Empresa</Text>
-                <View style={{flex: 3}}>
-                    
+                <View style={{flex: 3}}> 
                     <Controller
                         control={control}
                         rules={{

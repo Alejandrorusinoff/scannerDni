@@ -1,0 +1,47 @@
+export const datos1 = [
+    '¿Percibiste una marcada pérdida del olfato de manera repentina?',
+    '¿Percibiste una marcada pérdida del gusto (sabor de los alimentos) de manera repentina?',
+    '¿Tenés tos?',
+    '¿Tenés dolor de garganta?',
+    '¿Tenés dificultad respiratoria o falta de aire?',
+    '¿Tenés dolor de cabeza?',
+    '¿Tenés diarrea?',
+    '¿Tenés vómitos?',
+    '¿Tenés dolor muscular?',
+]
+
+export const datos2 = [
+    'Trabajo o convivo con una persona que actualmente es caso confirmado de COVID-19',
+    'Pasé en los ultimos 14 días al menos de 15 mínutos cerca de una persona que actualmente es caso confirmado COVID-19',
+    'Tengo / tuve cáncer',
+    'Tengo diabetes',
+    'Tengo alguna enfermedad hepática',
+    'Tengo enfermedad renal crónica',
+    'Tengo alguna enfermedad respiratoria',
+    'Tengo alguna enfermedad cardiológica',
+    'Tengo alguna condición que baja las defensas',
+]
+
+export const dataColumn = [
+    'Empresa',
+    'Fecha',
+    'Hora',
+    'Temperatura',
+    'Perdida del Olfato', 
+    'Perdida del Gusto', 
+    'Tos', 
+    'Dolor de Garganta',
+    'Problemas de Respitación', 
+    'Diarrea', 
+    'Dolor Cabeza', 
+    'Vomitos', 
+    'Dolor Muscular', 
+    'Trabajó con personas con covid', 
+    'Tuvo los ultimos días con gente con covid', 
+    'Tengo/Tuvo cancer', 'Tengo diabetes', 
+    'Enfermedad hepática', 
+    'Enfermedad renal crónica', 
+    'Enfermedad respiratoria', 
+    'Enfermedad cardiológica', 
+    'Baja Defensas',
+]

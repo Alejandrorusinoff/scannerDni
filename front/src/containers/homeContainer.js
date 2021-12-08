@@ -116,8 +116,8 @@ const HomeContainer = () => {
     }
 
     useEffect(() => {
-    postOrganizationEmployee(user)
-    .then(({data}) => dispatch(setAllPeople(data)));
+        postOrganizationEmployee(user)
+        .then(({data}) => dispatch(setAllPeople(data)));
     },[user.company.employees.length])
 
     return (
