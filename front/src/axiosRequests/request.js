@@ -77,6 +77,7 @@ export function postEmployeeAdd(name, lastName, dni, age, diretion, organization
 }
 
 export function postLogin(email, password) {
+    console.log(email, password)
     return axios.post('http://localhost:3001/api/organization/login', {
         email,
         password
