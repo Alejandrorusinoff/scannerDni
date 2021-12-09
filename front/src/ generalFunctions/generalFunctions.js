@@ -1,8 +1,3 @@
-import React from "react";
-import {useDispatch} from 'react-redux';
-
-const dispatch = useDispatch()
-
 export function handleOp(boxUno, set1, set2, setRole, state1, state2, condition) {
     if (!boxUno) {
         set1(state1);
@@ -57,3 +52,12 @@ export function close(disp, set) {
     disp(set(''));
 }
 
+export function lowerValidation(str) {
+    return str.toLocaleLowerCase()
+}
+
+export function upperOneStr(str) {
+    let word = str.charAt(0).toUpperCase() + str.slice(1).toLocaleLowerCase();
+    return word
+}
+  

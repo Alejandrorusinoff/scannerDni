@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import LoginContainer from './src/containers/loginContainer';
 import HomeApp from './src/navigation/homeApp';
 import CustomisableAlert from "react-native-customisable-alert";
+import FlashMessage from "react-native-flash-message";
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <NavigationContainer>
         {token? <HomeApp/>: <LoginContainer/>}
         <CustomisableAlert titleStyle={{fontSize: 18,fontWeight: "bold"}}/>
+        <FlashMessage position="top" />
       </NavigationContainer>
     </>
   );

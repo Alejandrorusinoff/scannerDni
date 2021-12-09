@@ -4,6 +4,8 @@ import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
 import { postLogin } from '../axiosRequests/request'
 import Login from '../screens/login'
+import { msjFlash } from '../alertMessage/message';
+import { lowerValidation } from '../ generalFunctions/generalFunctions';
 import styles from '../styles/loginStyles';
 
 const LoginContainer = ({navigation}) => {
@@ -11,8 +13,20 @@ const LoginContainer = ({navigation}) => {
     const dispatch = useDispatch()
 
     function sendLogin({email,password}) {
-        postLogin(email, password)
-        .then(({data}) => dispatch(setUser(data)))
+        postLogin(lowerValidation(email), password)
+        .then(({data}) => {
+            if (data === 'Usuario no encontrado') {
+                msjFlash(data, 'danger', 'danger')
+            }
+            else {
+                if (data.token) {
+                    dispatch(setUser(data)) 
+                }
+                else {
+                    msjFlash(data, 'danger', 'danger')
+                }
+            }
+        })
         .catch(err => console.log(err))
     }
 

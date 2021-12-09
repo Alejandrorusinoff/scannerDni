@@ -8,16 +8,14 @@ module.exports = {
         const {email, password} = req.body
         Organization.findOne({email})
         .then(company => {
-            if(!company) res.status(404).json("Usuario no encontrado")
+            if(!company) res.json("Usuario no encontrado")
             else{
                 if(bcrypt.compareSync(password, company.password)) {
                     let token = jwt.sign({company}, 'albondiga', {expiresIn: '7d'})
                     res.json({company, token})
-                    // const data = jwt.verify(token, "albondiga");
-                    // res.json({data})
                 }
                 else{
-                    res.status(401).json("Password inválido")
+                    res.json("Password inválido")
                 }
             }
         })

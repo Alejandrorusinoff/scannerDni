@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
+import { lowerValidation } from '../ generalFunctions/generalFunctions';
 import EmployeeData from '../screens/employeeData';
 import styles from '../styles/employeeDataStyles';
 
@@ -12,7 +13,15 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const dispatch = useDispatch()
 
     function saveEmployee({name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
-        postEmployeeAdd(name, lastName, dni, age, diretion, organizationName, organizationId, user)
+        postEmployeeAdd(
+            lowerValidation(name), 
+            lowerValidation(lastName), 
+            dni, 
+            age, 
+            lowerValidation(diretion), 
+            lowerValidation(organizationName), 
+            organizationId, 
+            user)
         .then(({data}) => {
             dispatch(setEmployee(data)), 
             navigation.navigate('CovidEmployeeData1Container')

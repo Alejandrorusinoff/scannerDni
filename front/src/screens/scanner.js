@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {  TouchableOpacity, } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+import { upperOneStr } from '../ generalFunctions/generalFunctions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/scannerStyles';
 
@@ -13,7 +14,7 @@ const ScanScreen = ({ route }) => {
         let dataDNI = dni.split("@")
         let arrDNI = []
         for (let i = 0; i < dataDNI.length; i++) {
-            arrDNI.push(dataDNI[i].toLocaleLowerCase());
+            arrDNI.push(upperOneStr(dataDNI[i]))
         }
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };

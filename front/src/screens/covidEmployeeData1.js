@@ -40,13 +40,13 @@ const CovidEmployeeData1 = ({temperature, setTemperature, boxUno1, boxDos1, boxU
             <CheckBoxText
               text="Si"
               isChecked={boxUno2}
-             /* 1 */ onPress={() => handleOp(boxUno2, setBoxUno2, setBoxDos2, setRole2, true, false, 'si')}
+              onPress={() => handleOp(boxUno2, setBoxUno2, setBoxDos2, setRole2, true, false, 'si')}
               style={{padding: 5}}
             />    
             <CheckBoxText
               text="No"
               isChecked={boxDos2}
-             /* 2 */ onPress={() => handleOp(boxDos2, setBoxDos2, setBoxUno2, setRole2, true, false, 'no')}
+              onPress={() => handleOp(boxDos2, setBoxDos2, setBoxUno2, setRole2, true, false, 'no')}
               style={{padding: 5}}
             />
 

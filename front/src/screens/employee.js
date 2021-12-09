@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/employeeStyles';
 
 const Employee = ({allPeople, navigationSingleEmployee}) => {
-    /* console.log(allPeople) */
 
     return( 
         <View>  

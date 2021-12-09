@@ -3,9 +3,8 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux';
 import { setTitle } from '../redux/title';
 import { getSearchAllEmployeeCovidData } from '../axiosRequests/request'
-import { dataColumn } from '../dataJson/datos';
+import { dataColumn } from '../data/datos';
 import SingleEmployee from '../screens/singleEmployee'
-import styles from '../styles/singleEmployeeStyles';
 
 const SingleEmployeeContainer = ({route}) => {
     const [dataCovid, setDataCovid] = useState([])

@@ -1,10 +1,6 @@
 import React from "react";
 import { showAlert, closeAlert } from "react-native-customisable-alert";
-import { useNavigation } from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-
-const navigation = useNavigation()
-const dispatch = useDispatch()
+import { showMessage } from "react-native-flash-message";
 
 export function Message(title, message, alertType, route, value) {
     showAlert({
@@ -13,6 +9,21 @@ export function Message(title, message, alertType, route, value) {
         alertType,
         onPress: () => {
             navigation.navigate(route, {data:value})
+            closeAlert()
+            }
+        }
+    )
+}
+
+export function mensaje(nav1, nav2) {
+    console.log(nav1.nav2)
+
+     showAlert({
+        title:"El empleado no existe",
+        message: "Desea agregar el empleado a la organización?",
+        alertType: 'warning',
+        onPress: () => {
+            nav1+'.'+nav2('EmployeeDataScannerContainer')
             closeAlert()
             }
         }
@@ -42,28 +53,6 @@ export function dataSuccessfullyMessage(route) {
     })
 }
 
-/* showAlert({
-    title:"El empleado no existe",
-    message: "Desea agregar el empleado a la organización?",
-    alertType: 'warning',
-    onPress: () => {
-        navigation.navigate('EmployeeDataScannerContainer', {data:dni})
-        closeAlert()
-        }
-    }
-)
-
-showAlert({
-    title:"El empleado no existe",
-    message: "Desea agregar el empleado a la organización?",
-    alertType: 'warning',
-    onPress: () => {
-        navigation.navigate('EmployeeDataContainer', {data:dni})
-        closeAlert()
-        }
-    }
-) */
-
 export function name(title, message, alertType, data, dni, route) {
     return showAlert({
         title,
@@ -77,25 +66,10 @@ export function name(title, message, alertType, data, dni, route) {
     }) 
 }
 
-
-/* showAlert({
-    title:"El empleado existe",
-    message: "Desea vincular el empleado a la organización?",
-    alertType: 'warning',
-    onPress: () => {
-        postAssociateEmployee(dni, user, data)
-        .then(() => { 
-            showAlert({
-                title:"El empleado existe",
-                message: "Desea agregar datos de covid",
-                alertType: 'warning',
-                onPress: () => {
-                    dispatch(setEmployee({employee: data})), 
-                    navigation.navigate('CovidEmployeeData1Container'),
-                    closeAlert()
-                }
-            }) 
-        })
-        .catch(err => console.log(err))
-    }
-}) */
+export function msjFlash(data, type, icon) {
+    showMessage({
+        message: data,
+        type: type,
+        icon: icon
+    })
+}
