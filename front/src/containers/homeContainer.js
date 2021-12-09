@@ -3,12 +3,13 @@ import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
-import {setUser} from '../redux/user';
 import {setAllPeople} from '../redux/allPeople';
 import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import { postSearchEmployeeByDNI, postAssociateEmployee, postOrganizationEmployee } from '../axiosRequests/request'
+import { close } from '../ generalFunctions/generalFunctions'
+import { Message } from '../alertMessage/message';
 import Home from '../screens/home';
 import styles from '../styles/homeStyles';
 
@@ -39,6 +40,7 @@ const HomeContainer = () => {
             // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj A
             if(!data._id){
                 if (Array.isArray(dni.arrDNI)) {
+                    /* Message('El empleado no existe', 'Desea agregar el empleado a la organización?', 'warning', 'EmployeeDataScannerContainer', dni) */
                     showAlert({
                         title:"El empleado no existe",
                         message: "Desea agregar el empleado a la organización?",
@@ -109,10 +111,6 @@ const HomeContainer = () => {
         })
         .then(() => reset({BuscarEmpleado: ''})) 
         .catch(err => console.log(err))
-    }
-
-    function close() {
-        dispatch(setUser(''));
     }
 
     useEffect(() => {

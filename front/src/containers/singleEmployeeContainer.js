@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux';
 import { setTitle } from '../redux/title';
 import { getSearchAllEmployeeCovidData } from '../axiosRequests/request'
+import { dataColumn } from '../dataJson/datos';
 import SingleEmployee from '../screens/singleEmployee'
 import styles from '../styles/singleEmployeeStyles';
 
@@ -22,37 +23,6 @@ const SingleEmployeeContainer = ({route}) => {
             setTableHead(dataColumn)})
     },[])
 
-    const elementButton = () => (
-        <TouchableOpacity onPress={() => console.log('ordena por empresa')}>
-          <View>
-            <Text style={styles.btnText}>Empresa</Text>
-          </View>
-        </TouchableOpacity>
-    );
-
-    let dataColumn = [
-        elementButton(),
-        'Fecha',
-        'Hora',
-        'Temperatura',
-        'Perdida del Olfato', 
-        'Perdida del Gusto', 
-        'Tos', 
-        'Dolor de Garganta',
-        'Problemas de Respitación', 
-        'Diarrea', 
-        'Dolor Cabeza', 
-        'Vomitos', 
-        'Dolor Muscular', 
-        'Trabajó con personas con covid', 
-        'Tuvo los ultimos días con gente con covid', 
-        'Tengo/Tuvo cancer', 'Tengo diabetes', 
-        'Enfermedad hepática', 
-        'Enfermedad renal crónica', 
-        'Enfermedad respiratoria', 
-        'Enfermedad cardiológica', 
-        'Baja Defensas',
-    ]
     let dataCovidTable = []
 
     for (let i = 0; i < dataCovid.length; i++) {

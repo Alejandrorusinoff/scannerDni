@@ -7,7 +7,7 @@ const navigation = useNavigation()
 const dispatch = useDispatch()
 
 export function Message(title, message, alertType, route, value) {
-    return showAlert({
+    showAlert({
         title,
         message,
         alertType,

@@ -3,29 +3,13 @@ import {useDispatch} from 'react-redux';
 
 const dispatch = useDispatch()
 
-export function handleOp(boxUno, setBoxUno, setBoxDos, setRole, state, condition) {
+export function handleOp(boxUno, set1, set2, setRole, state1, state2, condition) {
     if (!boxUno) {
-        setBoxUno(state);
-        setBoxDos(state);
+        set1(state1);
+        set2(state2);
         setRole(condition);
     }
 }
-
-/* export function handleYesOp1(params) {
-    if (!boxUno1) {
-        setBoxUno1(true);
-        setBoxDos1(false);
-        setRole1('si');
-    }
-}
-
-export function handleNotOp(params) {
-    if (!boxDos1) {
-        setBoxDos1(true);
-        setBoxUno1(false);
-        setRole1('no');
-    }
-} */
 
 export function trunc (x, posiciones = 0) {
     var s = x.toString()
@@ -44,17 +28,17 @@ export function trunc (x, posiciones = 0) {
     return finalNum
 }
 
-export function suma() {
-    if (temperature < 42) {
-        const temp1 = temperature + 0.1  
-        setTemperature(trunc(temp1, 1))
+export function suma(temp, setTemp, fn) {
+    if (temp < 42) {
+        const temp1 = temp + 0.1  
+        setTemp(fn(temp1, 1))
     }
 }
 
-export function resta() {
-    if (temperature > 34) {
-        const temp1 = (temperature - 0.1)
-        setTemperature(trunc(temp1, 1))
+export function resta(temp, setTemp, fn) {
+    if (temp > 34) {
+        const temp1 = (temp - 0.1)
+        setTemp(fn(temp1, 1))
     }
 }
 
@@ -69,7 +53,7 @@ export function handleYesOp(checkboxState, setCheckboxState, setRole, positive, 
     }
 };
 
-export function close() {
-    dispatch(setUser(''));
+export function close(disp, set) {
+    disp(set(''));
 }
 

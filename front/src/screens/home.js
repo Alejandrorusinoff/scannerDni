@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import {setUser} from '../redux/user';
 import Icon from 'react-native-vector-icons/Ionicons';
 import EmployeeContainer from '../containers/employeeContainer';
 import styles from '../styles/homeStyles';
+import { useDispatch } from 'react-redux';
 
 const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear}) => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm({
@@ -20,6 +22,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear})
         }
     });
     const navigation = useNavigation()
+    const dispatch = useDispatch()
     
     return (
         <View>
@@ -77,7 +80,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear})
                     onPress={handleSubmit(searchEmployeeDNI)}>
                     <Text>Registrar Empleado</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.botton} onPress={() => close()}>
+                <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser)}>
                     <Text>Cerrar sesión</Text>
                 </TouchableOpacity>
             </View>
