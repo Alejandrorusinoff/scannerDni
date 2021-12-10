@@ -102,3 +102,9 @@ export function getSearchAllEmployeeCovidData(_id, user) {
     {headers: {authorization: `Bearer ${user.token}`}},
     )
 }
+
+export function postEmail(email) {
+    return axios.post('http://localhost:3001/api/organization/login', {
+        email,
+    })
+}

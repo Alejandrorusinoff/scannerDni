@@ -8,6 +8,8 @@ import CovidEmployeeData2Container from '../containers/covidEmployeeData2Contain
 import QRCodeScanner from '../screens/scanner';
 import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
 import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
+import LoginContainer from '../containers/loginContainer';
+import RecoverPassword from '../screens/ recoverPassword'
 import { useSelector } from 'react-redux';
 import EmployeeContainer from '../containers/employeeContainer';
   
@@ -72,6 +74,16 @@ const HomeStack = () => {
         name="QRCodeScanner"
         component={QRCodeScanner}
         options={{ title: 'Escaneando DNI'}}
+      />
+
+      <Stack.Screen
+        name="LoginContainer"
+        component={LoginContainer}
+      />
+
+      <Stack.Screen
+        name="RecoverPassword"
+        component={RecoverPassword}
       />
       
     </Stack.Navigator>

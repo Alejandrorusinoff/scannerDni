@@ -2,20 +2,19 @@ import React from 'react'
 import { View } from 'react-native'
 import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
-import { postLogin } from '../axiosRequests/request'
-import Login from '../screens/login'
+import { postEmail } from '../axiosRequests/request'
+import RecoverPassword from '../screens/ recoverPassword'
 import { msjFlash } from '../alertMessage/message';
 import { lowerValidation } from '../ generalFunctions/generalFunctions';
 import { useNavigation } from '@react-navigation/core';
-import styles from '../styles/loginStyles';
 
-const LoginContainer = ({navigation}) => {
+const RecoverPasswordContainer = ({navigation}) => {
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigation()
 
-    function sendLogin({email,password}) {
-        postLogin(lowerValidation(email), password)
+    function sendEmail(email) {
+        postEmail(lowerValidation(email))
         .then(({data}) => {
             if (data === 'Usuario no encontrado') {
                 msjFlash(data, 'danger', 'danger')
@@ -32,15 +31,15 @@ const LoginContainer = ({navigation}) => {
         .catch(err => console.log(err))
     }
 
-    function password() {
-        navigation.navigate('RecoverPassword')
+    function sendLogin() {
+        
     }
 
     return(     
-        <View style={styles.container}>
-            <Login sendLogin={sendLogin} user={user} />
+        <View>
+            <RecoverPassword sendEmail={sendEmail} sendLogin={sendLogin}/>
         </View>
     )
 }
 
-export default LoginContainer
+export default RecoverPasswordContainer
