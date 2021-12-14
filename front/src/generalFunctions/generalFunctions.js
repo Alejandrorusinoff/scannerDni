@@ -1,5 +1,3 @@
-import { msjFlash } from '../alertMessage/message'
-
 export function handleOp(boxUno, set1, set2, setRole, state1, state2, condition) {
     if (!boxUno) {
         set1(state1);
@@ -63,25 +61,3 @@ export function upperOneStr(str) {
     return word
 }
   
-/* export function sendLogin(email,password, postLogin, lowerValidation, msjFlash, dispatch, setUser) {
-    postLogin(lowerValidation(email), password)
-    .then(({data}) => {
-        if (data === 'Usuario no encontrado') {
-            msjFlash(data, 'danger', 'danger')
-        }
-        else {
-            if (data.token) {
-                dispatch(setUser(data)) 
-            }
-            else {
-                msjFlash(data, 'danger', 'danger')
-            }
-        }
-    })
-    .catch(err => console.log(err))
-} */
-
-/* function navigatePassword(route) {
-    navigation.navigate(route)
-} */
-

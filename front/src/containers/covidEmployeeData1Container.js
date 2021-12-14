@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
-import { handleOp, trunc, suma, resta } from '../generalFunctions/functions'
+import { handleOp, trunc, suma, resta } from '../generalFunctions/generalFunctions'
 import { datos1 } from '../data/datos';
 import CovidEmployeeData1 from '../screens/covidEmployeeData1';
 import styles from '../styles/covidEmployeeData1Styles';

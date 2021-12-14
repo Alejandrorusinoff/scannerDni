@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import styles from "../styles/recoverPasswordStyles";
 
-const RecoverPassword = ({sendEmail}) => {
+const RecoverPassword = ({sendEmail, sendLogin}) => {
     const { control, handleSubmit, formState: { errors } } = useForm();
 
     return (
@@ -28,6 +28,7 @@ const RecoverPassword = ({sendEmail}) => {
                     />
                     {errors.email && <Text style={styles.textRequired}>Este campo el requerido.</Text>}
                     <View style={styles.fixToText}>
+                        <TouchableOpacity onPress={handleSubmit(sendLogin)} style={styles.botton}><Text>Cancelar</Text></TouchableOpacity>
                         <TouchableOpacity onPress={handleSubmit(sendEmail)} style={styles.botton}><Text>Confirmar</Text></TouchableOpacity>
                     </View>
                 </View>

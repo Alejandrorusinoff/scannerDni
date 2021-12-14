@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import {postCovidData} from '../axiosRequests/request'
 import { showAlert, closeAlert } from "react-native-customisable-alert";
-import { handleYesOp } from '../generalFunctions/functions'
+import { handleYesOp } from '../generalFunctions/generalFunctions'
 import { datos2 } from '../data/datos';
 import CovidEmployeeData2 from '../screens/covidEmployeeData2';
 import styles from '../styles/covidEmployeeDataStyles2';

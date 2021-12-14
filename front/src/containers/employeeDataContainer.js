@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
-import { lowerValidation } from '../generalFunctions/functions';
+import { lowerValidation } from '../generalFunctions/generalFunctions';
 import EmployeeData from '../screens/employeeData';
 import styles from '../styles/employeeDataStyles';
 

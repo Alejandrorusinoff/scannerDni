@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeContainer from '../containers/homeContainer';
 import Employee from '../screens/employee';
 import EmployeeDataContainer from '../containers/employeeDataContainer';
@@ -10,14 +9,13 @@ import QRCodeScanner from '../screens/scanner';
 import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
 import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
 import LoginContainer from '../containers/loginContainer';
-import RecoverPassword from '../screens/recoverPassword'
+import RecoverPassword from '../screens/ recoverPassword'
 import { useSelector } from 'react-redux';
 import EmployeeContainer from '../containers/employeeContainer';
   
 const HomeStack = () => {
   const fullName = useSelector(state => state.title)
   const Stack = createStackNavigator();
-  const Drawer = createDrawerNavigator();
   /* console.log('title ', fullName) */
   return (
     <Stack.Navigator
@@ -77,6 +75,17 @@ const HomeStack = () => {
         component={QRCodeScanner}
         options={{ title: 'Escaneando DNI'}}
       />
+
+      <Stack.Screen
+        name="LoginContainer"
+        component={LoginContainer}
+      />
+
+      <Stack.Screen
+        name="RecoverPassword"
+        component={RecoverPassword}
+      />
+      
     </Stack.Navigator>
   );
 }

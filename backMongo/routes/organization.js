@@ -8,7 +8,5 @@ router.post('/login', authController.login)
 //Creamos un usuario
 router.post('/register', authController.register)
 
-//Recuperar Contraseña
-router.put('/editPassword', authController.editPassword)
 
 module.exports = router;

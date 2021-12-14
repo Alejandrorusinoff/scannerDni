@@ -1,6 +1,5 @@
 const Organization = require('../db/models/organization')
 const jwt = require('jsonwebtoken')
-const nodemailer = require('nodemailer');
 const bcrypt = require("bcrypt");
 
 module.exports = {
@@ -34,41 +33,5 @@ module.exports = {
             res.json({company, token})
         })
         .catch(err => res.status(500).json(err))
-    },
-
-    //Recuperar Contraseña
-    editPassword: function (req, res) {
-        const {email} = req.body
-        Organization.findOne({email})
-        .then(company => {
-            
-            var transporter = nodemailer.createTransport({
-                service: 'hotmail',
-                auth: {
-                  user: 'ale_rusinoff13@hotmail.com',
-                  pass: '32068121qd'
-                }
-            })
-            
-            var mensaje = "Hola desde nodejs...";
-            
-            var mailOptions = {
-                from: 'ale_rusinoff13@hotmail.com',
-                to: email,
-                subject: 'Recuperar Contraseña',
-                text: mensaje,
-                html: '<h1>Ingrese su nueva contraseña!</h1> <input type="text" id="name" name="name" placeholder="Contraseña nueva" ><input type="submit" value="Submit">'
-            };
-            
-            transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email enviado: ' + info.response);
-                }
-            });
-            res.json('email enviado')
-        })
     }
 }
-

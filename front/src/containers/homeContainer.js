@@ -8,7 +8,7 @@ import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
 import { postSearchEmployeeByDNI, postAssociateEmployee, postOrganizationEmployee } from '../axiosRequests/request'
-import { close } from '../generalFunctions/functions'
+import { close } from '../generalFunctions/generalFunctions'
 import Home from '../screens/home';
 import styles from '../styles/homeStyles';
 
