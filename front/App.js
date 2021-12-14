@@ -7,6 +7,7 @@ import HomeApp from './src/navigation/homeApp';
 import RecoverPasswordContainer from './src/screens/ recoverPassword';
 import CustomisableAlert from "react-native-customisable-alert";
 import FlashMessage from "react-native-flash-message";
+import ExampleApp from './src/screens/camara';
 
 
 const App = () => {
