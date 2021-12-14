@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { postRegister } from '../axiosRequests/request'
 import Register from '../screens/register'
-import { lowerValidation } from '../ generalFunctions/generalFunctions'
+import { lowerValidation } from '../ generalFunctions/functions'
 import styles from '../styles/registerStyles';
 
 const RegisterContainer = () => {

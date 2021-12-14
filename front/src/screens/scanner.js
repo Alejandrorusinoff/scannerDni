@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {  TouchableOpacity, } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
-import { upperOneStr } from '../ generalFunctions/generalFunctions';
+import { upperOneStr } from '../generalFunctions/functions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/scannerStyles';
 

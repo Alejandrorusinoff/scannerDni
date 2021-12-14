@@ -3,8 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import LoginContainer from './src/containers/loginContainer';
+import LoginStack from './src/navigation/loginStack';
 import HomeApp from './src/navigation/homeApp';
-import RecoverPasswordContainer from './src/screens/ recoverPassword';
+import RecoverPasswordContainer from './src/screens/recoverPassword';
+import linking from './src/deepLinks/linking';
 import CustomisableAlert from "react-native-customisable-alert";
 import FlashMessage from "react-native-flash-message";
 
@@ -14,8 +16,8 @@ const App = () => {
   const {token} = useSelector(state => state.user)
   return (
     <>
-      <NavigationContainer>
-        {token? <HomeApp/>: <RecoverPasswordContainer/>}
+      <NavigationContainer /* linking={linking} */>
+        {token? <HomeApp/>: <LoginStack/>}
         <CustomisableAlert titleStyle={{fontSize: 18,fontWeight: "bold"}}/>
         <FlashMessage position="top" />
       </NavigationContainer>
