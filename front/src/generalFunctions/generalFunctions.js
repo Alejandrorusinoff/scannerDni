@@ -60,4 +60,13 @@ export function upperOneStr(str) {
     let word = str.charAt(0).toUpperCase() + str.slice(1).toLocaleLowerCase();
     return word
 }
+
+/* const flash = () => {
+    if(!stateFlash){
+        setStateFlash(true)
+    }
+    else if(stateFlash){
+        setStateFlash(false)
+    }
+} */
   

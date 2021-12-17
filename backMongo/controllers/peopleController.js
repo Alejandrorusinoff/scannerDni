@@ -13,12 +13,13 @@ module.exports = {
         EmployeeData.findOne({dni})
         //Busca el empleado dentro de la tabla empleados
         .then(employee => { 
-            const {name, lastName, age, diretion, organizationName, organizationId} = req.body
+            const {photo, name, lastName, age, diretion, organizationName, organizationId} = req.body
+            console.log('photo ----> ', photo)
             //Si no existe el empleado lo crea y lo asocia a la organizacion donde ingresa
             if(!employee) {
                 Organization.findOne({_id:organizationId})
                 .then(empresa => {
-                    EmployeeData.create({organizationId, name, lastName, dni, age, diretion, organizationName})
+                    EmployeeData.create({organizationId, photo, name, lastName, dni, age, diretion, organizationName})
                     .then(employee => {
                         empresa.employees.push(employee)
                         empresa.save()

@@ -61,7 +61,19 @@ const styles = StyleSheet.create({
     img1: {
         color: '#6495ed', 
         textAlign: 'left',
-        alignSelf: 'baseline'
+        alignSelf: 'baseline',
+        marginBottom: '8%'
+    },
+    imgEmployee: {
+        width: 70, 
+        height: 70, 
+        borderRadius: 75, 
+        marginTop: '5%', 
+        marginLeft: '5%'
+    },
+    container1: {
+        width: 80, 
+        height: 80
     }
 });
 

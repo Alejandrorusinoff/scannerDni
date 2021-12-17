@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeContainer from '../containers/homeContainer';
-import Employee from '../screens/employee';
+import CamaraContainer from '../containers/camaraContainer';
 import EmployeeDataContainer from '../containers/employeeDataContainer';
 import CovidEmployeeData1Container from '../containers/covidEmployeeData1Container';
 import CovidEmployeeData2Container from '../containers/covidEmployeeData2Container';
@@ -84,6 +84,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="RecoverPassword"
         component={RecoverPassword}
+      />
+
+      <Stack.Screen
+        name="CamaraContainer"
+        component={CamaraContainer}
       />
       
     </Stack.Navigator>

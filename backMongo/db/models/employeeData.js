@@ -12,6 +12,10 @@ const EmployeeDataScherma = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CovidEmployeeData',
     },
+    photo: {
+        type: String,
+        /* required: true, */
+    },
     name: {
         type: String,
         required: true,

@@ -13,8 +13,9 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
     const dataScannerDni = route.params.data.arrDNI
     const dispatch = useDispatch()
 
-    function saveEmployee({name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
+    function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
         postEmployeeAdd(
+            photo= name,
             lowerValidation(name), 
             lowerValidation(lastName), 
             dni, 

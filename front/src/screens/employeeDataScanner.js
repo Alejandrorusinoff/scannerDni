@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Text, TextInput, View, TouchableOpacity, ScrollView} from 'react-native'
 import { useForm, Controller } from "react-hook-form";
+import { useCamera } from 'react-native-camera-hooks';
+import { useNavigation } from '@react-navigation/core';
+import UserImage from '../components/UserImage/userImage';
 import styles from '../styles/employeeDataStyles';
 
+
 const EmployeeDataScanner = ({ saveEmployee, dni, dataScannerDni}) => {
+    const [imgCache, setImgCache] = useState('');
+    const [{ cameraRef }, { takePicture }] = useCamera(null);
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: dataScannerDni[2],
@@ -12,10 +18,28 @@ const EmployeeDataScanner = ({ saveEmployee, dni, dataScannerDni}) => {
         }
     })
 
+    const navigation = useNavigation()
+
+    const takePhoto = async () => {
+        try {
+          const data = await takePicture();
+          console.log(data.uri)
+          setImgCache(data.uri);
+        } catch (err) {
+          console.log(err);
+        }
+    }
+    console.log(imgCache)
+
+    const foto = (takePhoto, imgCache, cameraRef) => {
+        navigation.navigate('CamaraContainer', {data: {takePhoto, imgCache, cameraRef}})
+    }
+
     return(    
         <View>
             <View>
                 <ScrollView showsVerticalScrollIndicator={false}> 
+                    <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef}/>
                     <View style={{flex: 3}}>
                         <Controller
                             control={control}

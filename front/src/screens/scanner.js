@@ -19,14 +19,6 @@ const ScanScreen = ({ route }) => {
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
 
-    const flash = () => {
-        if(!stateFlash){
-            setStateFlash(true)
-        }
-        else if(stateFlash){
-            setStateFlash(false)
-        }
-    }
     return (
         <QRCodeScanner
             onRead={onSuccess1}
@@ -34,11 +26,12 @@ const ScanScreen = ({ route }) => {
             flashMode={stateFlash? RNCamera.Constants.FlashMode.torch : null}
             bottomContent={
             <TouchableOpacity style={styles.buttonTouchable}>
-                <Icon name={stateFlash ? "flash-sharp" : "flash-off" }
+                <Icon 
+                    name={stateFlash ? "flash-sharp" : "flash-off" }
                     size={30}
                     color={stateFlash ? 'rgb(234, 190, 63)' : 'white'}
                     style={{alignSelf: 'center', marginLeft: 10,}}
-                    onPress={() => flash()}
+                    onPress={() => setStateFlash(!stateFlash)}
                 />
             </TouchableOpacity>    
             }

@@ -62,9 +62,11 @@ export function postCovidData(temperature,smell,taste,cough,soreThroat,breathe,d
     {headers: {authorization: `Bearer ${user.token}`}})
 }
 
-export function postEmployeeAdd(name, lastName, dni, age, diretion, organizationName, organizationId, user) {
+export function postEmployeeAdd(photo, name, lastName, dni, age, diretion, organizationName, organizationId, user) {
+    console.log(photo)
     return axios.post('http://localhost:3001/api/employee/add',
     {
+        photo,
         name, 
         lastName, 
         dni, 

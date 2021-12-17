@@ -1,74 +1,81 @@
-'use strict';
-import React, { PureComponent } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react'
+import {Text, View, TouchableOpacity, Image} from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { RNCamera } from 'react-native-camera';
+import styles from '../styles/camaraStyles'
 
-class ExampleApp extends PureComponent {
-  render() {
-    return (
-      <View style={styles.container}>
-        <RNCamera
-          ref={ref => {
-            this.camera = ref;
-          }}
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use camera',
-            message: 'We need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: 'Permission to use audio recording',
-            message: 'We need your permission to use your audio',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-          onGoogleVisionBarcodesDetected={({ barcodes }) => {
-            console.log(barcodes);
-          }}
-        />
-        <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
-            <Text style={{ fontSize: 14 }}> SNAP </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
+const Camara = ({navigation, takePhoto, cameraRef, typeCamera, setTypeCamera, stateFlash, imgCache, stateViewCam, setStateViewCam, setStateFlash}) => {
 
-  takePicture = async () => {
-    if (this.camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options);
-      console.log(data.uri);
-    }
-  };
+    return(
+        <>
+            <TouchableOpacity onPress={() => setStateViewCam(!stateViewCam)} 
+            style={styles.bottonTogle}>
+                {stateViewCam ? 
+                <View>
+                <Text style={styles.textTogle}></Text>
+                    <RNCamera
+                        ref={cameraRef}
+                        captureAudio={false}
+                        flashMode={stateFlash ? RNCamera.Constants.FlashMode.on: RNCamera.Constants.FlashMode.off}
+                        style={styles.camMin}
+                        type={typeCamera ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}>
+                    </RNCamera>
+                </View> : 
+                    <Image
+                        style={styles.tinyLogo}
+                        source={{
+                        uri: imgCache,
+                        }}
+                    />
+                }
+            </TouchableOpacity>
+
+            {stateViewCam ? 
+            <Image
+                style={styles.imgMax}
+                source={{
+                uri: imgCache,
+                }}
+            /> :
+            <RNCamera
+                ref={cameraRef}
+                captureAudio={false}
+                flashMode={stateFlash ? RNCamera.Constants.FlashMode.on: RNCamera.Constants.FlashMode.off}
+                style={styles.preview}
+                type={typeCamera ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}>
+                <View style={styles.containerCamara}>
+                    <TouchableOpacity style={styles.capture}>
+                        <Icon 
+                            name={stateFlash ? "flash-sharp" : "flash-off" }
+                            size={50}
+                            color={stateFlash ? 'rgb(234, 190, 63)' : 'white'}
+                            onPress={() => setStateFlash(!stateFlash)}
+                        />
+                    </TouchableOpacity>  
+
+                    <TouchableOpacity style={styles.capture}>
+                        <Icon
+                        name="ellipse"
+                        size={80}
+                        color={'#FFFFFF'}
+                        onPress={() => takePhoto()}
+                        />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.capture}>
+                        <Icon
+                        name="camera-reverse-outline" 
+                        size={50}
+                        color={'#FFFFFF'}
+                        onPress={() => {setTypeCamera(!typeCamera)}}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </RNCamera>
+            }
+        </>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
-  },
-});
-
-export default ExampleApp
+export default Camara
 
