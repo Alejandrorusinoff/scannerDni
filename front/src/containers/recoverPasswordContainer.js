@@ -20,19 +20,10 @@ const RecoverPasswordContainer = ({navigation}) => {
                 msjFlash(data, 'danger', 'danger')
             }
             else {
-                if (data.token) {
-                    dispatch(setUser(data)) 
-                }
-                else {
-                    msjFlash(data, 'danger', 'danger')
-                }
+                data.token? dispatch(setUser(data)) : msjFlash(data, 'danger', 'danger')   
             }
         })
         .catch(err => console.log(err))
-    }
-
-    function sendLogin() {
-        
     }
 
     return(     

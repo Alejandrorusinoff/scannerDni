@@ -8,8 +8,10 @@ const styles = StyleSheet.create({
     },
     userImg: {
         display: 'flex', 
+        flexDirection: 'row',
         justifyContent: 'center', 
-        left: '10%',
+        alignContent: 'center',
+        left: '9%',
     },
     ContainerIconCamara: {
         position: 'relative', 
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
         right: 15, 
         display: 'flex', 
         height: 55, 
-        alignContent: 'center'
+        alignContent: 'center',        
     },
     iconCamara: {
         width: 55, 
@@ -29,14 +31,19 @@ const styles = StyleSheet.create({
         width: 168,
         height: 165, 
         borderRadius: 150, 
-        left: '9%',
+        left: '0%',
     },
     img1: {
         color: '#6495ed', 
         textAlign: 'left',
         alignSelf: 'baseline',
         marginBottom: '8%',
+        left: '0%',
+        width: 168,
+        height: 165,
         borderRadius: 150, 
+        borderWidth: 3,
+        borderColor: '#6495ed',
     },
 });
 

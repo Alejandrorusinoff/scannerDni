@@ -60,7 +60,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear})
                     />
                 </View>
             </View>
-            <View style={{height: 380}}>
+            <View style={{height: 410}}>
                 <ScrollView showsVerticalScrollIndicator={false}
                     refreshControl={
                         <RefreshControl
@@ -75,11 +75,6 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear})
                 </ScrollView>
             </View>
             <View style={styles.bottonAndText}>
-                <TouchableOpacity
-                    style={styles.botton}
-                    onPress={handleSubmit(searchEmployeeDNI)}>
-                    <Text>Registrar Empleado</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser)}>
                     <Text>Cerrar sesión</Text>
                 </TouchableOpacity>

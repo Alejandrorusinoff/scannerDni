@@ -1,44 +1,25 @@
-import React, {useState} from 'react'
-import {Text, View, ScrollView, Image} from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react'
+import {Text, View, ScrollView,} from 'react-native'
 import { Table, Row, Rows,} from 'react-native-table-component';
-import { useNavigation } from '@react-navigation/native';
+import {firstNameUp} from '../generalFunctions/generalFunctions'
 import UserImage from '../components/UserImage/userImage';
-import { useCamera } from 'react-native-camera-hooks';
 import styles from '../styles/singleEmployeeStyles';
 
-const SingleEmployee = ({name, lastName, dni, age, diretion, organizationName, _id, tableHead,  widthArr, dataCovid, dataCovidTable,}) => {
-    const navigation = useNavigation()
-    const [imgCache, setImgCache] = useState('');
-    const [{ cameraRef }, { takePicture }] = useCamera(null);
-    
-    const takePhoto = async () => {
-        try {
-          const data = await takePicture();
-          console.log(data)
-          setImgCache(data.uri);
-        } catch (err) {
-          console.log(err);
-        }
-    }
-
-    const foto = (fn, uriImg, ref) => {
-        navigation.navigate('CamaraContainer', {data: {fn, uriImg, ref}})
-    }
+const SingleEmployee = ({name, lastName, dni, age, diretion, organizationName, tableHead,  widthArr, dataCovid, dataCovidTable, photo, foto, takePhoto, imgCache, cameraRef}) => {
 
     return(    
         <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
-            <Text style={styles.title1}>{name} {lastName}</Text>
-                <View style={{flex: 3}}>
+            <Text style={styles.title1}>{firstNameUp(name)} {firstNameUp(lastName)}</Text>
+                <View>
                     <View>
-                        <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef}/>
+                        <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef} photo={photo}/>
                     </View>
                     <View style={{alignItems: 'center'}}>
                         <Text style={styles.title3}>N° Documento: {dni}</Text>
                         <Text style={styles.title3}>Edad: {age}</Text>
-                        <Text style={styles.title3}>Domicilio: {diretion}</Text>
-                        <Text style={styles.title3}>Empresa: {organizationName}</Text>
+                        <Text style={styles.title3}>Domicilio: {firstNameUp(diretion)}</Text>
+                        <Text style={styles.title3}>Empresa: {firstNameUp(organizationName)}</Text>
                     </View>
                 </View>
                 <View style={styles.bottonAndText}>

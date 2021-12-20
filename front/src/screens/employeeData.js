@@ -1,9 +1,10 @@
 import React from 'react'
 import {Text, TextInput, View, TouchableOpacity, ScrollView} from 'react-native'
 import { useForm, Controller } from "react-hook-form";
+import UserImage from '../components/UserImage/userImage';
 import styles from '../styles/employeeDataStyles';
 
-const EmployeeData = ({saveEmployee, dni}) => {
+const EmployeeData = ({saveEmployee, dni, takePhoto, foto, imgCache, cameraRef}) => {
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             dni: dni
@@ -14,6 +15,9 @@ const EmployeeData = ({saveEmployee, dni}) => {
         <View>
             <View>
                 <ScrollView showsVerticalScrollIndicator={false}> 
+                <View style={{flex: 1}}>
+                    <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef}/>
+                </View>
                     <View style={{flex: 3}}>
                         <Controller
                             control={control}

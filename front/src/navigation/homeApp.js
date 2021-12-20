@@ -20,18 +20,17 @@ const HomeStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="HomeContainer"
-      /* screenOptions={{
-        headerStyle: { backgroundColor: '#BFD732' },
-        headerTintColor: '#F5F6F7',
+      options={{ title: 'My home' }}
+      screenOptions={{
+        headerStyle: { backgroundColor: '#87cefa' },
+        headerTintColor: 'rgba(0, 0, 121, 0.89)',
         headerTitleAlign: 'center',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }} */
+      }}
     >
       <Stack.Screen
         name="HomeContainer"
         component={HomeContainer}
+        options={{ title: 'Bienvenido a la Home' }}
       />
       
       <Stack.Screen
@@ -89,6 +88,7 @@ const HomeStack = () => {
       <Stack.Screen
         name="CamaraContainer"
         component={CamaraContainer}
+        options={{ title: 'Camara'}}
       />
       
     </Stack.Navigator>

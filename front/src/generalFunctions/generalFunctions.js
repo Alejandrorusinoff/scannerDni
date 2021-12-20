@@ -61,6 +61,32 @@ export function upperOneStr(str) {
     return word
 }
 
+export const takePhoto = async () => {
+    try {
+        const data = await takePicture();
+        console.log(data.uri)
+        setImgCache(data.uri);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export function firstNameUp (str) {
+    if (str.split(" ").length > 1) {
+        let array = str.split(" ")
+        let matriz = []
+        for (let i = 0; i < array.length; i++) {
+            matriz.push(upperOneStr(array[i]))
+        }
+        str = matriz.join(" ")
+        return str
+    }
+    else {
+        return upperOneStr(str)
+    }
+}
+
+
 /* const flash = () => {
     if(!stateFlash){
         setStateFlash(true)
@@ -69,4 +95,3 @@ export function upperOneStr(str) {
         setStateFlash(false)
     }
 } */
-  

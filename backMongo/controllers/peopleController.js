@@ -14,7 +14,15 @@ module.exports = {
         //Busca el empleado dentro de la tabla empleados
         .then(employee => { 
             const {photo, name, lastName, age, diretion, organizationName, organizationId} = req.body
-            console.log('photo ----> ', photo)
+            /* console.log('photo ----> ', photo) */
+            console.log(photo,
+                name, 
+                lastName, 
+                dni, 
+                age, 
+                diretion, 
+                organizationName,
+                organizationId,)
             //Si no existe el empleado lo crea y lo asocia a la organizacion donde ingresa
             if(!employee) {
                 Organization.findOne({_id:organizationId})
@@ -86,9 +94,8 @@ module.exports = {
         const{ dni, temperature, smell, taste, cough, soreThroat, breathe, diarrhea, headache, vomits, musclePain, peopleCovid, cancer, diabetes, liverDisease, chronicIllness, respiratoryDisease, heartDisease, lowDefenses, employeeId, organizationId, lastDaysPeople } = req.body
         //Buscamos al empleado por su dni
         EmployeeData.findOne({dni})
-        
         .then(people => {
-            console.log("people ----> ", people)
+            /* console.log("people ----> ", people) */
             //Si existe el empleado existe le asigno los datos del covid
             if (people._id) {
                 //Agregamos datos del covid al empleado buscado
@@ -128,7 +135,7 @@ module.exports = {
             }
         ) 
         .then(allDataCovid => {
-            console.log('allDataCovid desde el back ---> ', allDataCovid.toJSON())
+            /* console.log('allDataCovid desde el back ---> ', allDataCovid.toJSON()) */
             res.json(allDataCovid)}) 
         .catch(err => res.json(err))
     },
@@ -146,22 +153,20 @@ module.exports = {
         CovidEmployeeData.find({employeeId, organizationId})
         .then(dataCovid => res.json(dataCovid))
         .catch(err => res.json(err))
+    },
+    
+    //Edita la foto de un empleado
+    editEmployee: function (req, res) {
+        const dni = req.params.dni
+        const {photo} = req.body
+        /* console.log('req.params.editEmployee ----> ',dni, photo) */
+        EmployeeData.findOneAndUpdate(dni)
+        .then(employee => {
+            employee.photo = photo,
+            /* console.log(employee), */
+            employee.save()
+            res.json('Foto actualizada')
+        })
     }
-
-        // //Ingresar hora de entrada
-    // registerHour: function(req, res) {
-    //     const {hourIn, firmIn} = req.body
-    //     RegisterHour.create({hourIn, firmIn})
-    //     .then(registerIn=> res.json(registerIn))
-    //     .catch(err => res.json(err))
-    // },
-
-    // //Ingresar hora de salida
-    // registerHour: function(req, res) {
-    //     const {hourOut, firmOut} = req.body
-    //     RegisterHour.create({hourOut, firmOut})
-    //     .then(registerOut=> res.json(registerOut))
-    //     .catch(err => res.json(err))
-    // },
 
 }

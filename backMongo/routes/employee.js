@@ -30,6 +30,9 @@ router.get('/searchEmployeeCovidData/:idData', checkJWT, peopleController.search
 //Buscar datos de covid de un empleado dentro de una empresa
 router.post('/searchCovidDataEmployeeAndCompany', checkJWT, peopleController.searchCovidDataEmployeeAndCompany)
 
+//Edita la foto de un empleado
+router.put('/editEmployee/:dni', checkJWT, peopleController.editEmployee)
+
 // //Registro de hora de entrada y salida
 // router.post('/registerHour',checkJWT, peopleController.registerHour)
 
