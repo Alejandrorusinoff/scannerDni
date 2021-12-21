@@ -33,7 +33,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
                 dispatch(setEmployee(data)), 
                 navigation.navigate('CovidEmployeeData1Container')
             })
-            .then(() => dispatch(setImgEmployee('')))
+            /* .then(() => dispatch(setImgEmployee(''))) */
             .catch(err => console.log(err))
         }
         else {
