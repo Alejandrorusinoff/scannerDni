@@ -17,7 +17,7 @@ const CovidEmployeeData1 = ({temperature, setTemperature, boxUno1, boxDos1, boxU
             <TouchableOpacity style={styles.bottonRadio} onPress={() => resta(temperature, setTemperature, trunc)}>
               <Text style={styles.temp1}>-</Text>
             </TouchableOpacity>
-            <Text style={styles.temp1}>{temperature}</Text>
+              <Text style={styles.temp}>{temperature}</Text>
             <TouchableOpacity style={styles.bottonRadio} onPress={() => suma(temperature, setTemperature, trunc)}>
               <Text style={styles.temp2}>+</Text>
             </TouchableOpacity>

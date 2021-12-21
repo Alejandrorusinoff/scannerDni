@@ -24,14 +24,14 @@ const SingleEmployee = ({name, lastName, dni, age, diretion, organizationName, t
                 </View>
                 <View style={styles.bottonAndText}>
                 </View>
-                {dataCovid.length ? 
+                {dataCovid.length ?
                     <ScrollView horizontal={true}>
-                    <View style={styles.container1}>
-                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={tableHead} style={styles.head} textStyle={{textAlign: 'center'}} widthArr={widthArr}/>
-                        <Rows data={dataCovidTable} textStyle={{textAlign: 'center'}} widthArr={widthArr}/>
-                    </Table>
-                    </View>
+                        <View style={styles.container1}>
+                            <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                            <Row data={tableHead} style={styles.head} textStyle={{textAlign: 'center'}} widthArr={widthArr}/>
+                            <Rows data={dataCovidTable} textStyle={{textAlign: 'center'}} widthArr={widthArr}/>
+                        </Table>
+                        </View>
                     </ScrollView> : null    
                 }
             </ScrollView>

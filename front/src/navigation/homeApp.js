@@ -72,7 +72,10 @@ const HomeStack = () => {
       <Stack.Screen
         name="QRCodeScanner"
         component={QRCodeScanner}
-        options={{ title: 'Escaneando DNI'}}
+        options={{ 
+          title: 'Escaneando DNI',
+          headerShown: false
+        }}
       />
 
       <Stack.Screen
@@ -88,9 +91,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="CamaraContainer"
         component={CamaraContainer}
-        options={{ title: 'Camara'}}
+        options={{ 
+          title: 'Camara',
+          headerShown: false
+        }}
       />
-      
     </Stack.Navigator>
   );
 }

@@ -9,7 +9,6 @@ import CustomisableAlert from "react-native-customisable-alert";
 import FlashMessage from "react-native-flash-message";
 import ExampleApp from './src/screens/camara';
 
-
 const App = () => {
   const Stack = createNativeStackNavigator()
   const {token} = useSelector(state => state.user)

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DrawerLayoutAndroidBase, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { upperOneStr } from '../generalFunctions/generalFunctions';
@@ -33,22 +33,26 @@ const ScanScreen = ({ route }) => {
     };
 
     return (
-        <QRCodeScanner
-            onRead={onSuccess1}
-            showMarker={true}
-            flashMode={stateFlash? RNCamera.Constants.FlashMode.torch : null}
-            bottomContent={
-            <TouchableOpacity style={styles.buttonTouchable}>
-                <Icon 
-                    name={stateFlash ? "flash-sharp" : "flash-off" }
-                    size={30}
-                    color={stateFlash ? 'rgb(234, 190, 63)' : 'white'}
-                    style={{alignSelf: 'center', marginLeft: 10,}}
-                    onPress={() => setStateFlash(!stateFlash)}
-                />
-            </TouchableOpacity>    
-            }
-        />
+        <View style={styles.container}>
+            <QRCodeScanner
+                onRead={onSuccess1}
+                showMarker={true}
+                flashMode={stateFlash? RNCamera.Constants.FlashMode.torch : null}
+                autoFocus={RNCamera.Constants.AutoFocus.on}
+                style={styles.preview}
+                bottomContent={
+                <TouchableOpacity style={styles.buttonTouchable}>
+                    <Icon 
+                        name={stateFlash ? "flash-sharp" : "flash-off" }
+                        size={30}
+                        color={stateFlash ? 'rgb(234, 190, 63)' : 'white'}
+                        style={{alignSelf: 'center', marginLeft: 10,}}
+                        onPress={() => setStateFlash(!stateFlash)}
+                    />
+                </TouchableOpacity>    
+                }
+            />
+        </View>
     );
 }
 

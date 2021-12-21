@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
       marginTop: '3%',
       marginBottom: '3%',
     },
+    temp: {
+      fontSize: 40,
+      width: 90,
+      textAlign: 'center'
+    },
     temp1: {
       fontSize: 40,
     },

@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
         margin: 0,
         padding: 10,
         borderColor: 'rgba(0, 0, 121, 0.89)',
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'rgba(0, 0, 121, 0.89)'
     },
     container: {
         marginHorizontal: 16,
