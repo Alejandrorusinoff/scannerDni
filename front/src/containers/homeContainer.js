@@ -25,7 +25,7 @@ const HomeContainer = () => {
     
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
-        .then(({data}) => {dispatch(setAllPeople(data.employees))});
+        .then(({data}) => {dispatch(setAllPeople(data))});
     }, [user.company.employees.length, imgEmployee, employee]);
 
 
