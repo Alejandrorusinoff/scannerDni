@@ -63,7 +63,6 @@ export function postCovidData(temperature,smell,taste,cough,soreThroat,breathe,d
 }
 
 export function postEmployeeAdd(photo, name, lastName, dni, age, diretion, organizationName, organizationId, user) {
-    console.log(user)
     return axios.post('http://localhost:3001/api/employee/add',
     {
         photo,

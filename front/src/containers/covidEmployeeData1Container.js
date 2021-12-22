@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { showAlert, closeAlert } from "react-native-customisable-alert";
 import { handleOp, trunc, suma, resta } from '../generalFunctions/generalFunctions'
+import { requireOptionMessage } from '../alertMessage/message'
 import { datos1 } from '../data/datos';
 import CovidEmployeeData1 from '../screens/covidEmployeeData1';
 import styles from '../styles/covidEmployeeData1Styles';
@@ -41,14 +41,7 @@ const CovidEmployeeData1Container = ({navigation, route}) => {
       navigation.navigate('CovidEmployeeData2Container',{temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain})
     }
     else{
-      showAlert({
-        title:"Error",
-        message: "Debe elegir una opción",
-        alertType: 'error',
-        onPress: () => {
-          closeAlert()
-        }
-      })
+      requireOptionMessage()
     }
   }
 

@@ -53,7 +53,7 @@ const Login = ({navigation, sendLogin, }) => {
                 {errors.password && <Text style={styles.textRequired}>Este campo el requerido.</Text>}
 
                 <View style={styles.bottonAndText}>
-                    <Text style={{color: 'rgba(0, 0, 121, 0.89)'}} onPress={()=> navigation.navigate('RecoverPassword')}>¿Olvidaste tu contraseña?</Text>
+                    <Text style={{color: 'rgba(0, 0, 121, 0.89)'}} onPress={()=> console.log('RecoverPassword')}>¿Olvidaste tu contraseña?</Text>
                     <TouchableOpacity
                         style={styles.botton}
                         onPress={handleSubmit(sendLogin)}

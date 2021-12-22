@@ -15,12 +15,12 @@ import EmployeeContainer from '../containers/employeeContainer';
 import styles from '../styles/homeStyles';
 import { useDispatch } from 'react-redux';
 
-const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear}) => {
-    const {control, handleSubmit, reset, formState: {errors}} = useForm({
+const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, handleSubmit, reset, formState }) => {
+    /* const {control, handleSubmit, reset, formState: {errors}} = useForm({
         defaultValues: {
             BuscarEmpleado: '',
         }
-    });
+    }); */
     const navigation = useNavigation()
     const dispatch = useDispatch()
     
@@ -57,6 +57,11 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, resetear})
                         color="rgba(0, 0, 121, 0.89)"
                         style={{alignSelf: 'center', marginLeft: 10}}
                         onPress={handleSubmit(searchEmployeeDNI)}
+                        /* onPress={() => {
+                            reset({
+                              BuscarEmpleado: ''
+                            })
+                        }} */
                     />
                 </View>
             </View>

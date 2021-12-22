@@ -5,13 +5,13 @@ import { firstNameUp } from '../generalFunctions/generalFunctions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/employeeStyles';
 
-const Employee = ({allPeople, navigationSingleEmployee}) => {
+const Employee = ({employees, navigationSingleEmployee}) => {
     
     return( 
         <View>  
-            {allPeople.employees && allPeople.employees.map((employee, index) => 
+            {employees && employees.map((employee, index) => 
             <View key={index}>
-            <TouchableOpacity onPress={()=> {navigationSingleEmployee(employee)}} style={{flex: 3, flexDirection: 'row', marginTop: 5, borderRadius: 10, backgroundColor: '#87cefa'}}>
+            <TouchableOpacity onPress={()=> {navigationSingleEmployee(employee)}} style={styles.containerButton}>
                 <View style={styles.container1}>
                     {employee.photo?
                     <Image

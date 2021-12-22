@@ -45,7 +45,7 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
                 alertType: 'success',
                 onPress: () => {
                     navigation.navigate('HomeContainer')
-                  closeAlert()
+                    closeAlert()
                 }
             })
         })

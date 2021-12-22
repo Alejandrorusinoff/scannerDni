@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
+import { setAllPeople } from '../redux/allPeople';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
 import { lowerValidation } from '../generalFunctions/generalFunctions';
 import { useCamera } from 'react-native-camera-hooks';
 import { msjFlash } from '../alertMessage/message';
 import { setImgEmployee } from '../redux/imgEmployee';
+import { postOrganizationEmployee } from '../axiosRequests/request'
 import EmployeeData from '../screens/employeeData';
 import styles from '../styles/employeeDataStyles';
 
@@ -29,16 +31,13 @@ const EmployeeDataContainer = ({navigation, route}) => {
                 lowerValidation(organizationName), 
                 organizationId, 
                 user)
-            .then(({data}) => {
-                dispatch(setEmployee(data)), 
-                navigation.navigate('CovidEmployeeData1Container')
-            })
-            /* .then(() => dispatch(setImgEmployee(''))) */
+                .then(({data}) => {
+                    dispatch(setEmployee(data))
+                    navigation.navigate('CovidEmployeeData1Container')
+                })
             .catch(err => console.log(err))
         }
-        else {
-            msjFlash('Debe sacar foto al empleado', 'danger', 'danger')
-        }
+        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')}
     }
 
     useEffect(() => {}, [imgCache])

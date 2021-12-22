@@ -61,16 +61,6 @@ export function upperOneStr(str) {
     return word
 }
 
-export const takePhoto = async () => {
-    try {
-        const data = await takePicture();
-        console.log(data.uri)
-        setImgCache(data.uri);
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 export function firstNameUp (str) {
     if (str.split(" ").length > 1) {
         let array = str.split(" ")
@@ -86,6 +76,33 @@ export function firstNameUp (str) {
     }
 }
 
+export function convertDni(dni) {
+    let dataDNI = dni.split("@")
+    let arrDNI = []
+    for (let i = 0; i < dataDNI.length; i++) {
+        if (dataDNI[i].split(" ").length > 1) {
+            dataDNI[i] = dataDNI[i].split(" ")
+            let matriz = []
+            for (let j = 0; j < dataDNI[i].length; j++) {
+                matriz.push(upperOneStr(dataDNI[i][j]))
+            }
+            dataDNI[i] = matriz.join(" ")
+            arrDNI.push(dataDNI[i])
+        }
+        else {
+            arrDNI.push(upperOneStr(dataDNI[i]))
+        }
+    }
+    return arrDNI
+} 
+
+/* export function takePhoto (takePicture, dispatch, setImgEmployee, setImgCache) {
+    takePicture.then(data => {
+        dispatch(setImgEmployee(data.uri))
+        setImgCache(data.uri);
+    })
+    .catch(err => console.log(err))  
+} */
 
 /* const flash = () => {
     if(!stateFlash){

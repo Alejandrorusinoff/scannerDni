@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
-import { upperOneStr } from '../generalFunctions/generalFunctions';
+import { convertDni} from '../generalFunctions/generalFunctions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/scannerStyles';
 
@@ -10,25 +10,7 @@ const ScanScreen = ({ route }) => {
     const [stateFlash, setStateFlash] = useState(false)
     const searchEmployeeDNI = route.params.searchEmployeeDNI
     const onSuccess1 = e => {
-        let dni = e.data
-        let dataDNI = dni.split("@")
-        console.log('dataDNI ----> ', dataDNI)
-        let arrDNI = []
-        for (let i = 0; i < dataDNI.length; i++) {
-            if (dataDNI[i].split(" ").length > 1) {
-                dataDNI[i] = dataDNI[i].split(" ")
-                let matriz = []
-                for (let j = 0; j < dataDNI[i].length; j++) {
-                    matriz.push(upperOneStr(dataDNI[i][j]))
-                }
-                dataDNI[i] = matriz.join(" ")
-                arrDNI.push(dataDNI[i])
-            }
-            else {
-                arrDNI.push(upperOneStr(dataDNI[i]))
-            }
-        }
-        console.log('arrDNI --> ', arrDNI)
+        const arrDNI = convertDni(e.data)
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
 

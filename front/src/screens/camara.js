@@ -2,11 +2,10 @@ import React from 'react'
 import {Text, View, TouchableOpacity, Image} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RNCamera } from 'react-native-camera';
-import styles from '../styles/camaraStyles'
 import { useNavigation } from '@react-navigation/core';
+import styles from '../styles/camaraStyles'
 
 const Camara = ({ takePhoto, cameraRef, typeCamera, setTypeCamera, stateFlash, imgCache, stateViewCam, setStateViewCam, setStateFlash}) => {
-console.log(imgCache, stateViewCam)
 const navigation = useNavigation()
     return(
         <>

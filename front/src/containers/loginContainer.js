@@ -17,24 +17,12 @@ const LoginContainer = ({navigation}) => {
     function sendLogin({email,password}) {
         postLogin(lowerValidation(email), password)
         .then(({data}) => {
-            if (data === 'Usuario no encontrado') {
-                msjFlash(data, 'danger', 'danger')
-            }
-            else {
-                if (data.token) {
-                    dispatch(setUser(data)) 
-                }
-                else {
-                    msjFlash(data, 'danger', 'danger')
-                }
-            }
+            if (data === 'Usuario no encontrado') msjFlash(data, 'danger', 'danger')
+            else {data.token ? dispatch(setUser(data)) : msjFlash(data, 'danger', 'danger')}
         })
         .catch(err => console.log(err))
     }
 
-    function password() {
-        navigation.navigate('RecoverPassword')
-    }
 
     return(     
         <View style={styles.container}>

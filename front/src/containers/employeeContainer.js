@@ -5,7 +5,7 @@ import Employee from '../screens/employee';
 import { useSelector } from 'react-redux';
 
 const EmployeeContainer = () => {
-    const allPeople = useSelector(state => state.allPeople)
+    const {employees} = useSelector(state => state.allPeople)
     const navigation = useNavigation()
     
     function navigationSingleEmployee(dataEmployee) {
@@ -14,7 +14,7 @@ const EmployeeContainer = () => {
 
     return( 
         <View>  
-            <Employee navigationSingleEmployee={navigationSingleEmployee} allPeople={allPeople}/>
+            <Employee navigationSingleEmployee={navigationSingleEmployee} employees={employees}/>
         </View>
     )
 }

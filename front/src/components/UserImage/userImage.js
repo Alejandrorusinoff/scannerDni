@@ -23,7 +23,7 @@ const UserImage = ({foto, takePhoto, imgCache, cameraRef, photo,}) => {
                 name="camera"
                 size={50}
                 color={'#FFFFFF'}
-                onPress={() => {console.log(imgCache),foto(takePhoto, imgCache, cameraRef,)}}
+                onPress={() => foto(takePhoto, imgCache, cameraRef)}
                 style={styles.iconCamara}
                 />
             </View>

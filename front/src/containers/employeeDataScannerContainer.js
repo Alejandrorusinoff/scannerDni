@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
+import { setAllPeople } from '../redux/allPeople';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
 import { lowerValidation } from '../generalFunctions/generalFunctions';
+import { postOrganizationEmployee } from '../axiosRequests/request'
 import { useCamera } from 'react-native-camera-hooks';
 import { msjFlash } from '../alertMessage/message';
 import { setImgEmployee } from '../redux/imgEmployee';
@@ -17,6 +19,7 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
     const dni = route.params.data.BuscarEmpleado
     const dataScannerDni = route.params.data.arrDNI
     const dispatch = useDispatch()
+    useEffect(() => {}, [imgCache]);
 
     function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
         if (imgCache) {
@@ -30,18 +33,13 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
                 lowerValidation(organizationName), 
                 organizationId, 
                 user)
-            .then(({data}) => {
-                dispatch(setEmployee(data)), 
+            .then(({data}) => {dispatch(setEmployee(data))
                 navigation.navigate('CovidEmployeeData1Container')
             })
-            /* .then(() => dispatch(setImgEmployee(''))) */
             .catch(err => console.log(err))
         }
-        else {
-            msjFlash('Debe sacar foto al empleado', 'danger', 'danger')
-        }
-    }
-    useEffect(() => {}, [imgCache]);
+        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')}
+    }  
 
     const takePhoto = () => {
         takePicture().then(data => {
@@ -63,3 +61,6 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
 }
 
 export default EmployeeDataScannerContainer
+
+
+

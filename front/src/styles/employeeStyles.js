@@ -74,6 +74,13 @@ const styles = StyleSheet.create({
     container1: {
         width: 80, 
         height: 80
+    },
+    containerButton: {
+        flex: 3, 
+        flexDirection: 'row', 
+        marginTop: 5, 
+        borderRadius: 10, 
+        backgroundColor: '#87cefa'
     }
 });
 
