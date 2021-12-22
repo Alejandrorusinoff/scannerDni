@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 
 const HomeContainer = () => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm();
-    const {user, imgEmployee, employee} = useSelector(state => state);
+    const {user, imgEmployee, employee, allPeople} = useSelector(state => state);
     const employees = useSelector(state => state.employee)
     const [refreshing, setRefreshing] = useState(false);
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const HomeContainer = () => {
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [user.company.employees.length, imgEmployee, employee]);
+    }, [user.company.employees.length, imgEmployee, employee, allPeople.employees.length]);
 
 
     function searchEmployeeDNI(dni) {
@@ -111,7 +111,7 @@ const HomeContainer = () => {
     useEffect(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    },[user.company.employees.length, imgEmployee, employee])
+    },[/* user.company.employees.length, */ imgEmployee, employee, allPeople.employees.length])
 
     return (
         <View style={styles.container}>

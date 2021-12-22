@@ -26,9 +26,6 @@ module.exports = {
     register: function(req, res) {
         //creamos el usuario
         const {companyName, companyHeadquartes, province, location, diretion, description, email, password} = req.body
-
-        console.log(companyName, companyHeadquartes, province, location, diretion, description, email, password)
-
         Organization.create({companyName, companyHeadquartes, province, location, diretion, description, email, password})
         //creamos el token
         .then(company => {

@@ -29,16 +29,21 @@ const styles = StyleSheet.create({
     },
     logo: {
         flex: 3, 
-        borderWidth: 1, 
+        /* borderWidth: 1, */ 
         justifyContent: 'center', 
         alignItems: 'center', 
         height: 300,
         borderRadius: 150,
+        backgroundColor: '#07b8ff'
     },
     textRequired: {
         paddingLeft: 15,
         color: 'red'
-    }
+    },
+    tinyLogo: {
+        width: 200,
+        height: 200,
+    },
 });
 
 export default styles

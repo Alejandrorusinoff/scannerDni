@@ -151,7 +151,6 @@ module.exports = {
         EmployeeData.findOne({dni})
         .then(employee => {
             employee.photo = photo,
-            console.log(employee),
             employee.save()
             res.json('Foto actualizada')
         })

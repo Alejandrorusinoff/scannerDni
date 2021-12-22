@@ -16,7 +16,6 @@ import EmployeeContainer from '../containers/employeeContainer';
 const HomeStack = () => {
   const fullName = useSelector(state => state.title)
   const Stack = createStackNavigator();
-  /* console.log('title ', fullName) */
   return (
     <Stack.Navigator
       initialRouteName="HomeContainer"

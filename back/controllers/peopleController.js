@@ -51,7 +51,7 @@ module.exports = {
         .then(people => {
             if (people) {
                 //Agregamos datos del covid al empleado buscado
-                console.log(Object.keys(EmployeeData.prototype))
+                /* console.log(Object.keys(EmployeeData.prototype)) */
                 CovidEmployeeData.create({
                     temperature, smell, taste, cough, soreThroat, breathe, diarrhea, vomits, musclePain, peopleCovid, cancer, diabetes, liverDisease, chronicIllness, respiratoryDisease, heartDisease, lowDefenses
                 })

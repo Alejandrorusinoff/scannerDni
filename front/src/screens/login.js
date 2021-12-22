@@ -1,8 +1,8 @@
 import React from 'react'
-import {Text, TextInput, View, TouchableOpacity, ScrollView, } from 'react-native'
+import {Text, TextInput, View, TouchableOpacity, ScrollView, Image } from 'react-native'
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/loginStyles';
-import { showMessage, hideMessage } from "react-native-flash-message";
+import logo from '../assets/static/ic_launcher_round.png'
 
 const Login = ({navigation, sendLogin, }) => {
     const { control, handleSubmit, formState: { errors } } = useForm();
@@ -11,7 +11,13 @@ const Login = ({navigation, sendLogin, }) => {
         <View>
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.logo} >
-                <Text style={{fontSize: 120, color: 'rgba(0, 0, 121, 0.89)'}}>LOGO</Text>
+                {/* <Text style={{fontSize: 120, color: '#87cefa', fontFamily: 'italic', }}>CI</Text> */}
+                {<Image
+                    style={styles.tinyLogo}
+                    source={
+                    logo
+                    }
+                />}
             </View>
             <View style={{flex: 3}}>
                 <Controller
