@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, StatusBar } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { convertDni} from '../generalFunctions/generalFunctions';
@@ -16,6 +16,7 @@ const ScanScreen = ({ route }) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar hidden={true}/>
             <QRCodeScanner
                 onRead={onSuccess1}
                 showMarker={true}

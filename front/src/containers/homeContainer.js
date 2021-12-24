@@ -26,7 +26,7 @@ const HomeContainer = () => {
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [user.company.employees.length, imgEmployee, employee, allPeople.employees.length]);
+    }, [user.company.employees.length, imgEmployee, employee, /* allPeople.employees.length */]);
 
 
     function searchEmployeeDNI(dni) {
@@ -111,7 +111,7 @@ const HomeContainer = () => {
     useEffect(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    },[/* user.company.employees.length, */ imgEmployee, employee, allPeople.employees.length])
+    },[user.company.employees.length, imgEmployee, employee, /* allPeople.employees.length */])
 
     return (
         <View style={styles.container}>

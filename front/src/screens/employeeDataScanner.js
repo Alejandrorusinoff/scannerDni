@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, TextInput, View, TouchableOpacity, ScrollView} from 'react-native'
+import {Text, TextInput, View, TouchableOpacity, ScrollView, StatusBar} from 'react-native'
 import { useForm, Controller } from "react-hook-form";
 import UserImage from '../components/UserImage/userImage';
 import styles from '../styles/employeeDataStyles';
@@ -16,6 +16,7 @@ const EmployeeDataScanner = ({ saveEmployee, dni, dataScannerDni, takePhoto, fot
     return(    
         <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
+                <StatusBar backgroundColor="black"/>
                 <View style={{flex: 1}}>
                     <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef}/>
                 </View>

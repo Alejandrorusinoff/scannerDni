@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View, TouchableOpacity, Image} from 'react-native'
+import {Text, View, TouchableOpacity, Image, StatusBar} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RNCamera } from 'react-native-camera';
 import { useNavigation } from '@react-navigation/core';
@@ -9,6 +9,7 @@ const Camara = ({ takePhoto, cameraRef, typeCamera, setTypeCamera, stateFlash, i
 const navigation = useNavigation()
     return(
         <>
+            <StatusBar hidden={true}/>
             <TouchableOpacity onPress={() => setStateViewCam(!stateViewCam)} 
             style={styles.bottonTogle}>
                 {stateViewCam ? 

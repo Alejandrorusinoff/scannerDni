@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import CheckBoxText from '../components/ChecKBoxText/checKBoxText';
 import { useSelector } from 'react-redux';
 import styles from '../styles/covidEmployeeDataStyles2';
@@ -10,6 +10,7 @@ const CovidEmployeeData2 = ({temperature,smell,taste,cough,soreThroat,breathe,di
     return (
         <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
+                <StatusBar backgroundColor="black"/>
                 <View>
                     <Text style={styles.title1}>Autoevaluación</Text>
                     <Text style={styles.text}>Si tu situación de salud contempla algunas de las siguientes opciones, seleccionrá las que correspondan</Text>

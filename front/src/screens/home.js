@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   TextInput,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   RefreshControl,
+  StatusBar,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
@@ -16,16 +17,12 @@ import styles from '../styles/homeStyles';
 import { useDispatch } from 'react-redux';
 
 const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, handleSubmit, reset, formState }) => {
-    /* const {control, handleSubmit, reset, formState: {errors}} = useForm({
-        defaultValues: {
-            BuscarEmpleado: '',
-        }
-    }); */
     const navigation = useNavigation()
     const dispatch = useDispatch()
     
     return (
         <View>
+            <StatusBar backgroundColor="black"/>
             <View>
                 <View style={styles.search}>
                 <Controller
@@ -57,11 +54,6 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                         color="rgba(0, 0, 121, 0.89)"
                         style={{alignSelf: 'center', marginLeft: 10}}
                         onPress={handleSubmit(searchEmployeeDNI)}
-                        /* onPress={() => {
-                            reset({
-                              BuscarEmpleado: ''
-                            })
-                        }} */
                     />
                 </View>
             </View>

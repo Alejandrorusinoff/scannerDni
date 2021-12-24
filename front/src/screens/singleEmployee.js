@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View, ScrollView,} from 'react-native'
+import {Text, View, ScrollView, StatusBar} from 'react-native'
 import { Table, Row, Rows,} from 'react-native-table-component';
 import {firstNameUp} from '../generalFunctions/generalFunctions'
 import UserImage from '../components/UserImage/userImage';
@@ -10,6 +10,7 @@ const SingleEmployee = ({name, lastName, dni, age, diretion, organizationName, t
     return(    
         <View>
             <ScrollView showsVerticalScrollIndicator={false}> 
+            <StatusBar backgroundColor="black"/>
             <Text style={styles.title1}>{firstNameUp(name)} {firstNameUp(lastName)}</Text>
                 <View>
                     <View>
