@@ -15,8 +15,8 @@ const EmployeeDataScanner = ({ saveEmployee, dni, dataScannerDni, takePhoto, fot
 
     return(    
         <View>
+                {/* <StatusBar backgroundColor="black"/> */}
             <ScrollView showsVerticalScrollIndicator={false}> 
-                <StatusBar backgroundColor="black"/>
                 <View style={{flex: 1}}>
                     <UserImage foto={foto} takePhoto={takePhoto} imgCache={imgCache} cameraRef={cameraRef}/>
                 </View>

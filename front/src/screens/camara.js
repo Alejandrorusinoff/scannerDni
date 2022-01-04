@@ -7,6 +7,7 @@ import styles from '../styles/camaraStyles'
 
 const Camara = ({ takePhoto, cameraRef, typeCamera, setTypeCamera, stateFlash, imgCache, stateViewCam, setStateViewCam, setStateFlash}) => {
 const navigation = useNavigation()
+
     return(
         <>
             <StatusBar hidden={true}/>
