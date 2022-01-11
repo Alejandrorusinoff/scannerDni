@@ -13,9 +13,13 @@ const styles = StyleSheet.create({
     },
     container: {
         marginHorizontal: 16,
-        padding: 10,
+        /* padding: 10, */
         height: '100%',
     },
+    container1: {
+        flex: 1,
+        padding: 0,
+      },
     bottonAndText: {
         paddingLeft: 10,
         paddingRight: 10,

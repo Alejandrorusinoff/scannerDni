@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     photoEmployee: {
         width: 168,
         height: 165, 
-        borderRadius: 150, 
+        borderRadius: 83, 
         left: '0%',
     },
     img1: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         left: '0%',
         width: 168,
         height: 165,
-        borderRadius: 150, 
+        borderRadius: 83, 
         borderWidth: 3,
         borderColor: '#6495ed',
     },

@@ -17,7 +17,7 @@ function ChecKBoxText({ text, isChecked, onPress }) {
         textContainerStyle={{
           ...styles.option,
         }}
-        textStyle={{ fontFamily: "JosefinSans-Regular" }}
+        /* textStyle={{ fontFamily: "JosefinSans-Regular" }} */
         disableBuiltInState
         isChecked={isChecked}
         onPress={onPress}

@@ -21,9 +21,9 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
     const dispatch = useDispatch()
     
     return (
-        <View>
+        <View style={[styles.container1, {flexDirection: "column"}]}>
             <StatusBar backgroundColor="black"/>
-            <View>
+            <View style={{ flex: 0.9,}}>
                 <View style={styles.search}>
                 <Controller
                     control={control}
@@ -49,6 +49,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                         style={{alignSelf: 'center'}}
                         onPress={() => navigation.navigate('QRCodeScanner',{searchEmployeeDNI})}
                     />
+
                     <Icon name="search-outline"
                         size={30}
                         color="rgba(0, 0, 121, 0.89)"
@@ -57,7 +58,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     />
                 </View>
             </View>
-            <View style={{height: 410}}>
+            <View style={{ flex: 7,}}>
                 <ScrollView showsVerticalScrollIndicator={false}
                     refreshControl={
                         <RefreshControl
@@ -71,7 +72,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     </View>
                 </ScrollView>
             </View>
-            <View style={styles.bottonAndText}>
+            <View style={[styles.bottonAndText, { flex: 1, }]}>
                 <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser)}>
                     <Text>Cerrar sesión</Text>
                 </TouchableOpacity>
@@ -81,4 +82,3 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
 };
 
 export default Home;
-
