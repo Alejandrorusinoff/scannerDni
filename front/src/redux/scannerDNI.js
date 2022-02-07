@@ -1,4 +1,4 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+/* import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const dataDNI = {
     "N° cliente": null, 
@@ -16,4 +16,4 @@ const scannerDNIReducer = createReducer(dataDNI,{
     [setScannerDNI]: (state, action) => action.payload
 })
 
-export default scannerDNIReducer
+export default scannerDNIReducer */

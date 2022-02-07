@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
+import { setUser } from '../redux/user';
 import { setAllPeople } from '../redux/allPeople';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
@@ -17,10 +18,11 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const [imgCache, setImgCache] = useState('');
     const user = useSelector(state => state.user)
     const dni = route.params.data.BuscarEmpleado
+    const employee = useSelector(state => state.employee)
     const dispatch = useDispatch()
 
     function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
-        if (imgCache) {
+        /* if (imgCache) {
             postEmployeeAdd(
                 imgCache,
                 lowerValidation(name), 
@@ -37,7 +39,23 @@ const EmployeeDataContainer = ({navigation, route}) => {
                 })
             .catch(err => console.log(err))
         }
-        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')}
+        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')} */
+        postEmployeeAdd(
+            imgCache,
+            lowerValidation(name), 
+            lowerValidation(lastName), 
+            dni, 
+            age, 
+            lowerValidation(diretion), 
+            lowerValidation(organizationName), 
+            organizationId, 
+            user)
+            .then(({data}) => {
+                const employeeId = data.employee._id
+                dispatch(setEmployee([...employee, data.employee]))
+                navigation.navigate('CovidEmployeeData1Container',{dni, employeeId})
+            })
+        .catch(err => console.log(err))
     }
 
     useEffect(() => {}, [imgCache])

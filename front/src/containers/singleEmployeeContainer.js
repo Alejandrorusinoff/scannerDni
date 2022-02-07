@@ -15,7 +15,7 @@ const SingleEmployeeContainer = ({route}) => {
     const [tableHead, setTableHead] = useState([])
     const [imgCache, setImgCache] = useState('');
     const [{ cameraRef }, { takePicture }] = useCamera(null);
-    const [widthArr, setWidthArr] = useState([250, 80, 80, 100, 80, 80, 80, 80, 90, 80, 80, 80, 80, 120, 130, 80, 80, 80, 110, 100, 100, 80,])
+    const [widthArr, setWidthArr] = useState([250, 80, 95, 100, 80, 80, 80, 80, 90, 80, 80, 80, 80, 120, 130, 80, 80, 80, 110, 100, 100, 80,])
     const {name, lastName, dni, age, diretion, organizationName, _id, photo} = route.params.data
     const {user} = useSelector(state => state);
     const navigation = useNavigation()

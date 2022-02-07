@@ -13,12 +13,13 @@ const LoginContainer = ({navigation}) => {
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigation()
+    console.log({user})
 
     function sendLogin({email,password}) {
         postLogin(lowerValidation(email), password)
         .then(({data}) => {
             if (data === 'Usuario no encontrado') msjFlash(data, 'danger', 'danger')
-            else {data.token ? dispatch(setUser(data)) : msjFlash(data, 'danger', 'danger')}
+            else {data.token ? dispatch(setUser({...data})) : msjFlash(data, 'danger', 'danger')}
         })
         .catch(err => console.log(err))
     }
@@ -26,7 +27,7 @@ const LoginContainer = ({navigation}) => {
 
     return(     
         <View style={styles.container}>
-            <Login sendLogin={sendLogin} user={user} />
+            <Login sendLogin={sendLogin}/>
         </View>
     )
 }

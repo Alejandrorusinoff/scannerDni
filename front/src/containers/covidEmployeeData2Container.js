@@ -28,13 +28,11 @@ const CovidEmployeeData2Container = ({navigation, route}) => {
     const [checkboxState8, setCheckboxState8] = useState(false);
     const [role8, setRole8] = useState('no');
     
-    const {temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,} = route.params
+    const {temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId} = route.params
     
     const empleado = useSelector(state => state)
     const companyId = useSelector(state => state.user.company._id);
     const {user} = useSelector(state => state);
-    const dni = useSelector(state => state.employee.employee.dni)
-    const employeeId = useSelector(state => state.employee.employee._id)
 
     function saveDataCovidDataBase(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId, user) {
         postCovidData(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId, user)

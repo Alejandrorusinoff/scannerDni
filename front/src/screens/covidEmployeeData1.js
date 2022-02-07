@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-nativ
 import CheckBoxText from '../components/ChecKBoxText/checKBoxText';
 import styles from '../styles/covidEmployeeData1Styles';
 
-const CovidEmployeeData1 = ({temperature, setTemperature, boxUno1, boxDos1, boxUno2, boxDos2, boxUno3, boxDos3, boxUno4, boxDos4, boxUno5, boxDos5, boxUno6, boxDos6, boxUno7, boxDos7, boxUno8, boxDos8, boxUno9, boxDos9, role1, role2, role3, role4, role5, role6, role7, role8, role9, setBoxUno1, setBoxUno2, setBoxUno3, setBoxUno4, setBoxUno5, setBoxUno6, setBoxUno7, setBoxUno8, setBoxUno9, setBoxDos1, setBoxDos2, setBoxDos3, setBoxDos4, setBoxDos5, setBoxDos6, setBoxDos7, setBoxDos8, setBoxDos9, setRole1, setRole2, setRole3, setRole4, setRole5, setRole6, setRole7, setRole8, setRole9,datos1, suma, resta, saveDataCovidStore, handleOp, trunc}) => {
+const CovidEmployeeData1 = ({temperature, setTemperature, boxUno1, boxDos1, boxUno2, boxDos2, boxUno3, boxDos3, boxUno4, boxDos4, boxUno5, boxDos5, boxUno6, boxDos6, boxUno7, boxDos7, boxUno8, boxDos8, boxUno9, boxDos9, role1, role2, role3, role4, role5, role6, role7, role8, role9, setBoxUno1, setBoxUno2, setBoxUno3, setBoxUno4, setBoxUno5, setBoxUno6, setBoxUno7, setBoxUno8, setBoxUno9, setBoxDos1, setBoxDos2, setBoxDos3, setBoxDos4, setBoxDos5, setBoxDos6, setBoxDos7, setBoxDos8, setBoxDos9, setRole1, setRole2, setRole3, setRole4, setRole5, setRole6, setRole7, setRole8, setRole9,datos1, suma, resta, saveDataCovidStore, handleOp, trunc, dni, employeeId}) => {
   
   return (
     <View>
@@ -149,7 +149,7 @@ const CovidEmployeeData1 = ({temperature, setTemperature, boxUno1, boxDos1, boxU
               style={{padding: 5}}
             />
           <TouchableOpacity style={styles.botton}
-          onPress={() => saveDataCovidStore(temperature,role1,role2,role3,role4,role5,role6,role7,role8,role9)}>
+          onPress={() => saveDataCovidStore(temperature,role1,role2,role3,role4,role5,role6,role7,role8,role9,dni,employeeId)}>
             <Text>Registrar Datos de Covid</Text>
           </TouchableOpacity>
         </View>

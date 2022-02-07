@@ -17,17 +17,15 @@ const Tab = createBottomTabNavigator();
 const HomeContainer = () => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm();
     const {user, imgEmployee, employee, allPeople} = useSelector(state => state);
-    const employees = useSelector(state => state.employee)
     const [refreshing, setRefreshing] = useState(false);
     const dispatch = useDispatch();
-
+    
     const navigation = useNavigation()
     
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [user.company.employees.length, imgEmployee, employee, /* allPeople.employees.length */]);
-
+    }, [user.company.employees.length, imgEmployee, employee.length, /* allPeople.employees.length */]);
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
@@ -65,34 +63,39 @@ const HomeContainer = () => {
             // 2er caso- el empleado no esta vinculado a la organizacion
             else {
                 for (let i = 0; i < data.organizationId.length; i++) {
-                    if (data.organizationId[i] == user.company._id) {
+                    if (data.organizationId[i] === user.company._id) { //// ------ revisar aca ------ ////
+                        const employeeId = data._id
+                        const dni = data.dni
                         showAlert({
                             title:"El empleado existe",
                             message: "Desea agregar datos de covid",
                             alertType: 'warning',
                             onPress: () => {
-                                dispatch(setEmployee({employee: data})), 
-                                navigation.navigate('CovidEmployeeData1Container',{dni, data}),
+                                dispatch(setEmployee([...employee, data])),
+                                navigation.navigate('CovidEmployeeData1Container',{dni, employeeId}),
                                 closeAlert()
                             }
                         }) 
                     }
                     else{
                         // el empleado no esta vinculado a la organizacion
+                        const employeeId = data._id
+                        const dni = data.dni
                         showAlert({
                             title:"El empleado existe",
                             message: "Desea vincular el empleado a la organización?",
                             alertType: 'warning',
                             onPress: () => {
-                                postAssociateEmployee(dni, user, data)
+                                postAssociateEmployee(dni, user, employeeId)
                                 .then(() => { 
                                     showAlert({
                                         title:"El empleado existe",
                                         message: "Desea agregar datos de covid",
                                         alertType: 'warning',
                                         onPress: () => {
-                                            dispatch(setEmployee({employee: data})), 
-                                            navigation.navigate('CovidEmployeeData1Container'),
+                                            /* dispatch(setEmployee({employee: data})),  */
+                                            dispatch(setEmployee([...employee, data])),
+                                            navigation.navigate('CovidEmployeeData1Container',{dni, employeeId}),
                                             closeAlert()
                                         }
                                     }) 
@@ -110,12 +113,14 @@ const HomeContainer = () => {
 
     useEffect(() => {
         postOrganizationEmployee(user)
-        .then(({data}) => {dispatch(setAllPeople(data))});
-    },[user.company.employees.length, imgEmployee, employee, /* allPeople.employees.length */])
+        .then(({data}) => {
+            dispatch(setAllPeople(data))
+        });
+    },[user.company.employees.length, imgEmployee, employee.length,])
 
     return (
         <View style={styles.container}>
-            <Home user={user} refreshing={refreshing} onRefresh={onRefresh} searchEmployeeDNI={searchEmployeeDNI} close={close} control={control} handleSubmit={handleSubmit} reset={reset}/>
+            <Home user={user} refreshing={refreshing} onRefresh={onRefresh} searchEmployeeDNI={searchEmployeeDNI} close={close} control={control} handleSubmit={handleSubmit} reset={reset} allPeople={allPeople}/>
         </View>
     );
 };

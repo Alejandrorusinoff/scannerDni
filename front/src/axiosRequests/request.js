@@ -10,12 +10,12 @@ export function postSearchEmployeeByDNI(dni, user) {
     )
 }
 
-export function postAssociateEmployee(dni, user, data) {
+export function postAssociateEmployee(dni, user, idEmployee) {
     return axios.post('http://localhost:3001/api/employee/associateEmployee', 
         {
-            dni: dni.BuscarEmpleado, 
+            dni,
             organizationId: user.company._id, 
-            idEmployee: data._id
+            idEmployee
         }, 
         {
             headers: {authorization: `Bearer ${user.token}`}

@@ -15,11 +15,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import EmployeeContainer from '../containers/employeeContainer';
 import styles from '../styles/homeStyles';
 import { useDispatch } from 'react-redux';
+import { setEmployee } from '../redux/employee';
+import { setAllPeople } from '../redux/allPeople';
 
-const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, handleSubmit, reset, formState }) => {
+const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, handleSubmit, allPeople, reset, formState }) => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
-    
+
     return (
         <View style={[styles.container1, {flexDirection: "column"}]}>
             <StatusBar backgroundColor="black"/>
@@ -68,12 +70,12 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     }
                 >
                     <View>
-                        {user.company.employees.length ? <EmployeeContainer/>: null}
+                        {allPeople.employees && allPeople.employees.length ? <EmployeeContainer allPeople={allPeople}/>: null}
                     </View>
                 </ScrollView>
             </View>
             <View style={[styles.bottonAndText, { flex: 1, }]}>
-                <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser)}>
+                <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser, setEmployee, setAllPeople)}>
                     <Text>Cerrar sesión</Text>
                 </TouchableOpacity>
             </View>

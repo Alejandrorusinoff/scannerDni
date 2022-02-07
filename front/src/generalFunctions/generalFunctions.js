@@ -48,8 +48,10 @@ export function handleYesOp(checkboxState, setCheckboxState, setRole, positive, 
     }
 };
 
-export function close(disp, set) {
-    disp(set(''));
+export function close(disp, set, set1, set2) {
+    disp(set(''))
+    disp(set1([]))
+    disp(set2([]))
 }
 
 export function lowerValidation(str) {
