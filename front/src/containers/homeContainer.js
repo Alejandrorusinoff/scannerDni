@@ -25,7 +25,7 @@ const HomeContainer = () => {
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [user.company.employees.length, imgEmployee, employee.length,]);
+    }, [user.company.employees.length, imgEmployee, employee.length, /* allPeople.employees.length */]);
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
@@ -64,10 +64,8 @@ const HomeContainer = () => {
             else {
                 const employeeId = data._id
                 const dni = data.dni
-                let result = data.organizationId.filter(id => id == user.company._id)
-                console.log(result)
                 for (let i = 0; i < data.organizationId.length; i++) {
-                    if (result) {
+                    if (data.organizationId[i] === user.company._id) { 
                         return(
                             showAlert({
                                 title:"El empleado existe",
