@@ -13,7 +13,6 @@ const LoginContainer = ({navigation}) => {
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigation()
-    console.log({user})
 
     function sendLogin({email,password}) {
         postLogin(lowerValidation(email), password)
@@ -23,7 +22,6 @@ const LoginContainer = ({navigation}) => {
         })
         .catch(err => console.log(err))
     }
-
 
     return(     
         <View style={styles.container}>

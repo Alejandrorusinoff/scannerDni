@@ -25,13 +25,12 @@ const HomeContainer = () => {
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [user.company.employees.length, imgEmployee, employee.length, /* allPeople.employees.length */]);
+    }, [user.company.employees.length, imgEmployee, employee.length,]);
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
         postSearchEmployeeByDNI(dni,user)
         .then(({data}) => {
-            console.log(data)
             // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj A
             if(!data._id){
                 if (Array.isArray(dni.arrDNI)) {
@@ -63,25 +62,27 @@ const HomeContainer = () => {
             // 1do caso- el empleado esta vinculado a la organizacion
             // 2er caso- el empleado no esta vinculado a la organizacion
             else {
+                const employeeId = data._id
+                const dni = data.dni
+                let result = data.organizationId.filter(id => id == user.company._id)
+                console.log(result)
                 for (let i = 0; i < data.organizationId.length; i++) {
-                    if (data.organizationId[i] === user.company._id) { //// ------ revisar aca ------ ////
-                        const employeeId = data._id
-                        const dni = data.dni
-                        showAlert({
-                            title:"El empleado existe",
-                            message: "Desea agregar datos de covid",
-                            alertType: 'warning',
-                            onPress: () => {
-                                dispatch(setEmployee([...employee, data])),
-                                navigation.navigate('CovidEmployeeData1Container',{dni, employeeId}),
-                                closeAlert()
-                            }
-                        }) 
+                    if (result) {
+                        return(
+                            showAlert({
+                                title:"El empleado existe",
+                                message: "Desea agregar datos de covid",
+                                alertType: 'warning',
+                                onPress: () => {
+                                    dispatch(setEmployee([...employee, data])),
+                                    navigation.navigate('CovidEmployeeData1Container',{dni, employeeId}),
+                                    closeAlert()
+                                }
+                            }) 
+                        )
                     }
                     else{
                         // el empleado no esta vinculado a la organizacion
-                        const employeeId = data._id
-                        const dni = data.dni
                         showAlert({
                             title:"El empleado existe",
                             message: "Desea vincular el empleado a la organización?",
@@ -94,7 +95,6 @@ const HomeContainer = () => {
                                         message: "Desea agregar datos de covid",
                                         alertType: 'warning',
                                         onPress: () => {
-                                            /* dispatch(setEmployee({employee: data})),  */
                                             dispatch(setEmployee([...employee, data])),
                                             navigation.navigate('CovidEmployeeData1Container',{dni, employeeId}),
                                             closeAlert()
