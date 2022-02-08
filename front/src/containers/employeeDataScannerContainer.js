@@ -17,6 +17,7 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
     const [{ cameraRef }, { takePicture }] = useCamera(null);
     const [imgCache, setImgCache] = useState('');
     const dni = route.params.data.BuscarEmpleado
+    const employee = useSelector(state => state.employee)
     const dataScannerDni = route.params.data.arrDNI
     const dispatch = useDispatch()
     useEffect(() => {}, [imgCache]);
@@ -33,8 +34,10 @@ const EmployeeDataScannerContainer = ({navigation, route}) => {
                 lowerValidation(organizationName), 
                 organizationId, 
                 user)
-            .then(({data}) => {dispatch(setEmployee(data))
-                navigation.navigate('CovidEmployeeData1Container')
+            .then(({data}) => {
+                const employeeId = data.employee._id
+                dispatch(setEmployee([...employee, data.employee]))
+                navigation.navigate('CovidEmployeeData1Container',{dni, employeeId})
             })
             .catch(err => console.log(err))
         }

@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     containerButton: {
         flex: 3, 
         flexDirection: 'row', 
-        marginTop: 5, 
+        marginBottom: 5, 
         borderRadius: 10, 
         backgroundColor: '#87cefa'
     }

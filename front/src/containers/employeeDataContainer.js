@@ -22,7 +22,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const dispatch = useDispatch()
 
     function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
-        /* if (imgCache) {
+        if (imgCache) {
             postEmployeeAdd(
                 imgCache,
                 lowerValidation(name), 
@@ -34,28 +34,13 @@ const EmployeeDataContainer = ({navigation, route}) => {
                 organizationId, 
                 user)
                 .then(({data}) => {
-                    dispatch(setEmployee(data))
-                    navigation.navigate('CovidEmployeeData1Container')
+                    const employeeId = data.employee._id
+                    dispatch(setEmployee([...employee, data.employee]))
+                    navigation.navigate('CovidEmployeeData1Container',{dni, employeeId})
                 })
             .catch(err => console.log(err))
         }
-        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')} */
-        postEmployeeAdd(
-            imgCache,
-            lowerValidation(name), 
-            lowerValidation(lastName), 
-            dni, 
-            age, 
-            lowerValidation(diretion), 
-            lowerValidation(organizationName), 
-            organizationId, 
-            user)
-            .then(({data}) => {
-                const employeeId = data.employee._id
-                dispatch(setEmployee([...employee, data.employee]))
-                navigation.navigate('CovidEmployeeData1Container',{dni, employeeId})
-            })
-        .catch(err => console.log(err))
+        else {msjFlash('Debe sacar foto al empleado', 'danger', 'danger')}
     }
 
     useEffect(() => {}, [imgCache])

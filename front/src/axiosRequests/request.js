@@ -2,11 +2,11 @@ import axios from "axios";
 
 export function postSearchEmployeeByDNI(dni, user) {
     return axios.post('http://localhost:3001/api/employee/searchEmployeeByDNI',
-      {
-          dni: dni.BuscarEmpleado,
-          organizationId: user.company._id
-      },
-      {headers: {authorization: `Bearer ${user.token}`}},
+        {
+            dni: dni.BuscarEmpleado,
+            organizationId: user.company._id
+        },
+        {headers: {authorization: `Bearer ${user.token}`}},
     )
 }
 

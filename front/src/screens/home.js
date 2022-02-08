@@ -25,7 +25,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
     return (
         <View style={[styles.container1, {flexDirection: "column"}]}>
             <StatusBar backgroundColor="black"/>
-            <View style={{ flex: 0.9,}}>
+            <View style={{paddingBottom: 10}}>
                 <View style={styles.search}>
                 <Controller
                     control={control}
@@ -60,7 +60,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     />
                 </View>
             </View>
-            <View style={{ flex: 7,}}>
+            <View style={{height: '77%'}}>
                 <ScrollView showsVerticalScrollIndicator={false}
                     refreshControl={
                         <RefreshControl
@@ -74,7 +74,7 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     </View>
                 </ScrollView>
             </View>
-            <View style={[styles.bottonAndText, { flex: 1, }]}>
+            <View style={[styles.bottonAndText,]}>
                 <TouchableOpacity style={styles.botton} onPress={() => close(dispatch, setUser, setEmployee, setAllPeople)}>
                     <Text>Cerrar sesión</Text>
                 </TouchableOpacity>

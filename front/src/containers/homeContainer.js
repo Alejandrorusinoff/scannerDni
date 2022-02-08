@@ -31,6 +31,7 @@ const HomeContainer = () => {
         //busca al empleado por dni
         postSearchEmployeeByDNI(dni,user)
         .then(({data}) => {
+            console.log(data)
             // si el empleado no existe, te envia a la vista para q se cree apretando aceptar en el msj A
             if(!data._id){
                 if (Array.isArray(dni.arrDNI)) {
