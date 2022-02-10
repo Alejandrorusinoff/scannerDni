@@ -8,9 +8,11 @@ import styles from '../styles/scannerStyles';
 
 const ScanScreen = ({ route }) => {
     const [stateFlash, setStateFlash] = useState(false)
+    const [stateDate, setStateDate] = useState([])
     const searchEmployeeDNI = route.params.searchEmployeeDNI
     const onSuccess1 = e => {
         const arrDNI = convertDni(e.data)
+        setStateDate(arrDNI)
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
 
@@ -23,6 +25,7 @@ const ScanScreen = ({ route }) => {
                 flashMode={stateFlash? RNCamera.Constants.FlashMode.torch : null}
                 autoFocus={RNCamera.Constants.AutoFocus.on}
                 style={styles.preview}
+                markerStyle={stateDate.length ? false : {borderColor: 'red'}}
                 bottomContent={
                 <TouchableOpacity style={styles.buttonTouchable}>
                     <Icon 
