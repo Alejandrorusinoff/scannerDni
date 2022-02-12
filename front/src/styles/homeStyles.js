@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(0, 0, 121, 0.89)',
         textAlign: 'center',
         fontSize: 20,
-        color: 'rgba(0, 0, 121, 0.89)'
+        color: 'rgba(0, 0, 121, 0.89)',
+        /* borderWidth: 1, */
     },
     container: {
         marginHorizontal: 16,
@@ -33,6 +34,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#87cefa',
         marginBottom: 5,
     },
+    bottonSearch: {
+        /* padding: 5, */
+        height: 50,
+        width: 40,
+        borderRadius: 50,
+        /* alignItems: 'center', */
+        /* backgroundColor: 'white', */
+        /* marginBottom: 5, */
+       /*  borderWidth: 1, */
+        /* alignSelf: 'center', */
+        right: '0%',
+        justifyContent: 'center',
+        
+    },
     logo: {
         flex: 3,
         borderWidth: 1,
@@ -53,7 +68,7 @@ const styles = StyleSheet.create({
     search: {
         borderWidth: 1,
         flexDirection: 'row',
-        borderColor: 'rgba(0, 0, 121, 0.89)',
+        /* borderColor: 'rgba(0, 0, 121, 0.89)', */
         borderRadius: 50,
         marginTop: '3%',
     },

@@ -20,6 +20,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const dni = route.params.data.BuscarEmpleado
     const employee = useSelector(state => state.employee)
     const dispatch = useDispatch()
+    console.log(imgCache)
 
     function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
         if (imgCache) {
@@ -47,6 +48,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
 
     const takePhoto = () => {
         takePicture().then(data => {
+            console.log(data.uri)
             dispatch(setImgEmployee(data.uri))
             setImgCache(data.uri);
         })

@@ -44,20 +44,36 @@ const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, h
                     )}
                     name="BuscarEmpleado"
                 />
+                <TouchableOpacity style={styles.bottonSearch} onPress={() => navigation.navigate('QRCodeScanner',{searchEmployeeDNI})}>
                     <Icon
                         name="barcode-outline"
                         size={30}
                         color="rgba(0, 0, 121, 0.89)"
                         style={{alignSelf: 'center'}}
-                        onPress={() => navigation.navigate('QRCodeScanner',{searchEmployeeDNI})}
                     />
+                </TouchableOpacity>
 
+                <TouchableOpacity style={styles.bottonSearch} onPress={handleSubmit(searchEmployeeDNI)}>
                     <Icon name="search-outline"
                         size={30}
                         color="rgba(0, 0, 121, 0.89)"
-                        style={{alignSelf: 'center', marginLeft: 10}}
-                        onPress={handleSubmit(searchEmployeeDNI)}
+                        style={{alignSelf: 'center'}}
                     />
+                </TouchableOpacity>
+                    {/* <Icon
+                        name="barcode-outline"
+                        size={30}
+                        color="rgba(0, 0, 121, 0.89)"
+                        style={{alignSelf: 'center', borderWidth: 1}}
+                        onPress={() => navigation.navigate('QRCodeScanner',{searchEmployeeDNI})}
+                    /> */}
+
+                    {/* <Icon name="search-outline"
+                        size={30}
+                        color="rgba(0, 0, 121, 0.89)"
+                        style={{alignSelf: 'center', marginLeft: 10, borderWidth: 1}}
+                        onPress={handleSubmit(searchEmployeeDNI)}
+                    /> */}
                 </View>
             </View>
             <View style={{height: '77%'}}>
