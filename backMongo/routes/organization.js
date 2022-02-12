@@ -10,3 +10,5 @@ router.post('/register', authController.register)
 
 
 module.exports = router;
+
+/* /api/organization/login */
