@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         color: 'rgba(0, 0, 121, 0.89)',
-        /* borderWidth: 1, */
     },
     container: {
         marginHorizontal: 16,
@@ -22,9 +21,6 @@ const styles = StyleSheet.create({
         padding: 0,
       },
     bottonAndText: {
-        /* paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 10, */
         padding: 5,
     },
     botton: {
@@ -35,15 +31,9 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     bottonSearch: {
-        /* padding: 5, */
         height: 50,
         width: 40,
         borderRadius: 50,
-        /* alignItems: 'center', */
-        /* backgroundColor: 'white', */
-        /* marginBottom: 5, */
-       /*  borderWidth: 1, */
-        /* alignSelf: 'center', */
         right: '0%',
         justifyContent: 'center',
         
@@ -68,7 +58,7 @@ const styles = StyleSheet.create({
     search: {
         borderWidth: 1,
         flexDirection: 'row',
-        /* borderColor: 'rgba(0, 0, 121, 0.89)', */
+        borderColor: 'rgba(0, 0, 121, 0.89)',
         borderRadius: 50,
         marginTop: '3%',
     },
