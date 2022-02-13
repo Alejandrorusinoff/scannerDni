@@ -17,4 +17,18 @@ const userReducer = createReducer(company, {
     [setUser]: (state, action) => action.payload
 })
 
+
+
+// export const setUser = createAction('SET_USER')
+/* const userReducer = createReducer({}, {
+    [setUser]: (state, action) => action.payload
+}) */
+// export const sendLoginRequest = () => (dispatch) => {
+//     return axios.post("/api/login").then(({ data }) => {
+//         dispatch(setUser(data));
+//         return data
+//     })
+// }
+
 export default userReducer
+

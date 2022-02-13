@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import {setUser} from '../redux/user'
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmail } from '../axiosRequests/request'
-import RecoverPassword from '../screens/ recoverPassword'
+import RecoverPassword from '../screens/recoverPassword'
 import { msjFlash } from '../alertMessage/message';
 import { lowerValidation } from '../generalFunctions/generalFunctions';
 import { useNavigation } from '@react-navigation/core';

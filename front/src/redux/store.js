@@ -5,8 +5,6 @@ import employeeReducer from './employee'
 import allPeopleReducer from './allPeople'
 import titleReducer from './title'
 import dataCovidReducer from './dataCovid'
-/* import scannerDNIReducer from './scannerDNI' */
-import dataVinculationReducer from './dataVinculation'
 import imgEmployeeReducer from './imgEmployee'
 
 const store = configureStore({
@@ -17,7 +15,6 @@ const store = configureStore({
         allPeople: allPeopleReducer,
         title: titleReducer,
         dataCovid: dataCovidReducer,
-        /* scannerDNI: scannerDNIReducer, */
         imgEmployee: imgEmployeeReducer,
     }
 })

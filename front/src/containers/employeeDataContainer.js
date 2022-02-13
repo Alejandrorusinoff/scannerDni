@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { View } from 'react-native'
 import { setEmployee } from '../redux/employee';
-import { setUser } from '../redux/user';
-import { setAllPeople } from '../redux/allPeople';
 import { useDispatch, useSelector } from 'react-redux';
 import { postEmployeeAdd } from '../axiosRequests/request'
 import { lowerValidation } from '../generalFunctions/generalFunctions';
 import { useCamera } from 'react-native-camera-hooks';
 import { msjFlash } from '../alertMessage/message';
 import { setImgEmployee } from '../redux/imgEmployee';
-import { postOrganizationEmployee } from '../axiosRequests/request'
 import EmployeeData from '../screens/employeeData';
 import styles from '../styles/employeeDataStyles';
 

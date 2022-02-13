@@ -9,7 +9,7 @@ import QRCodeScanner from '../screens/scanner';
 import EmployeeDataScannerContainer from '../containers/employeeDataScannerContainer'
 import SingleEmployeeContainer from '../containers/singleEmployeeContainer';
 import LoginContainer from '../containers/loginContainer';
-import RecoverPassword from '../screens/ recoverPassword'
+import RecoverPassword from '../screens/recoverPassword'
 import { useSelector } from 'react-redux';
 import EmployeeContainer from '../containers/employeeContainer';
   
