@@ -29,6 +29,14 @@ const userReducer = createReducer(company, {
 //         return data
 //     })
 // }
+/* 
+export const postLogin = (email, password) => (dispatch) => {
+    return axios.post('http://localhost:3001/api/organization/login', {
+        email,
+        password
+    })
+}
+*/
 
 export default userReducer
 

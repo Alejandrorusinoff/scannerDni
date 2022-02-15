@@ -19,7 +19,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
     const dispatch = useDispatch()
 
     function saveEmployee({ name, lastName, dni, age, diretion, organizationName, organizationId = user.company._id}) {
-        if (imgCache) {
+        if (imgCache && imgCache != '') {
             postEmployeeAdd(
                 imgCache,
                 lowerValidation(name), 

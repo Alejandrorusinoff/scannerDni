@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {useForm} from 'react-hook-form';
-import {useDispatch, useSelector} from 'react-redux';
-import {setAllPeople} from '../redux/allPeople';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAllPeople } from '../redux/allPeople';
 import { setEmployee } from '../redux/employee';
 import { useNavigation } from '@react-navigation/native';
 import { showAlert, closeAlert } from "react-native-customisable-alert";
@@ -25,7 +25,7 @@ const HomeContainer = () => {
     const onRefresh = useCallback(() => {
         postOrganizationEmployee(user)
         .then(({data}) => {dispatch(setAllPeople(data))});
-    }, [employee.length,]);
+    }, [employee.length, imgEmployee]);
 
     function searchEmployeeDNI(dni) {
         //busca al empleado por dni
@@ -117,7 +117,7 @@ const HomeContainer = () => {
         .then(({data}) => {
             dispatch(setAllPeople(data))
         });
-    },[employee.length,])
+    },[employee.length, imgEmployee])
 
     return (
         <View style={styles.container}>

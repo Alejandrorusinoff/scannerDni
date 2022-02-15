@@ -11,12 +11,12 @@ import {
 import {useForm, Controller} from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import {setUser} from '../redux/user';
-import Icon from 'react-native-vector-icons/Ionicons';
-import EmployeeContainer from '../containers/employeeContainer';
-import styles from '../styles/homeStyles';
 import { useDispatch } from 'react-redux';
 import { setEmployee } from '../redux/employee';
 import { setAllPeople } from '../redux/allPeople';
+import Icon from 'react-native-vector-icons/Ionicons';
+import EmployeeContainer from '../containers/employeeContainer';
+import styles from '../styles/homeStyles';
 
 const Home = ({user, refreshing, onRefresh, searchEmployeeDNI, close, control, handleSubmit, allPeople, reset, formState }) => {
     const navigation = useNavigation()

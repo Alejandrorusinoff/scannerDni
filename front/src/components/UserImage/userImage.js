@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Image } from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../styles/userImageStyles';
 
@@ -19,13 +19,13 @@ const UserImage = ({foto, takePhoto, imgCache, cameraRef, photo,}) => {
                 }  
             </View>
             <View style={styles.ContainerIconCamara}>
-                <Icon
-                name="camera"
-                size={50}
-                color={'#FFFFFF'}
-                onPress={() => foto(takePhoto, imgCache, cameraRef)}
-                style={styles.iconCamara}
-                />
+                <TouchableOpacity style={styles.iconCamara} onPress={() => foto(takePhoto, imgCache, cameraRef)}>
+                    <Icon 
+                        name="camera"
+                        size={50}
+                        color='#434343'  
+                    />
+                </TouchableOpacity>
             </View>
         </View> 
     )
