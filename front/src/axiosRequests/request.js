@@ -63,18 +63,20 @@ export function postCovidData(temperature,smell,taste,cough,soreThroat,breathe,d
 }
 
 export function postEmployeeAdd(photo, name, lastName, dni, age, diretion, organizationName, organizationId, user) {
-    return axios.post('http://localhost:3001/api/employee/add',
-    {
-        photo,
-        name, 
-        lastName, 
-        dni, 
-        age, 
-        diretion, 
-        organizationName,
-        organizationId,
-    },
-    {headers: {authorization: `Bearer ${user.token}`}})
+    if (photo) {
+        return axios.post('http://localhost:3001/api/employee/add',
+        {
+            photo,
+            name, 
+            lastName, 
+            dni, 
+            age, 
+            diretion, 
+            organizationName,
+            organizationId,
+        },
+        {headers: {authorization: `Bearer ${user.token}`}})
+    }
 }
 
 export function postLogin(email, password) {
@@ -110,10 +112,12 @@ export function postEmail(email) {
 }
 
 export function updateEmployee(dni, uriImg, user) {
-    return axios.put(`http://localhost:3001/api/employee/editEmployee/${dni}`,
-    {
-        photo: uriImg
-    },
-    {headers: {authorization: `Bearer ${user.token}`}},
-    ) 
+    if (uriImg) {
+        return axios.put(`http://localhost:3001/api/employee/editEmployee/${dni}`,
+        {
+            photo: uriImg
+        },
+        {headers: {authorization: `Bearer ${user.token}`}},
+        ) 
+    }
 }
