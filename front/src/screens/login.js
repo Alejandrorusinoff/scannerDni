@@ -12,7 +12,6 @@ const Login = ({navigation, sendLogin, }) => {
             <StatusBar backgroundColor="white" barStyle='dark-content'/>
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.logo} >
-                {/* <Text style={{fontSize: 120, color: '#87cefa', fontFamily: 'italic', }}>CI</Text> */}
                 {<Image
                     style={styles.tinyLogo}
                     source={

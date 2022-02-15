@@ -66,7 +66,7 @@ const HomeContainer = () => {
                 const dni = data.dni
                 for (let i = 0; i < data.organizationId.length; i++) {
                     if (data.organizationId[i] === user.company._id) { 
-                        console.log(data) //ver si se borra la foto (creo un empleado y voy a otro usuario y cargo los datos de covid)
+                       /*  console.log(data) */ //ver si se borra la foto (creo un empleado y voy a otro usuario y cargo los datos de covid)
                         return(
                             showAlert({
                                 title:"El empleado existe",
@@ -82,7 +82,7 @@ const HomeContainer = () => {
                     }
                     else{
                         // el empleado no esta vinculado a la organizacion
-                        console.log(data) //ver si se borra la foto (creo un empleado y voy a otro usuario y cargo los datos de covid)
+                        /* console.log(data) */ //ver si se borra la foto (creo un empleado y voy a otro usuario y cargo los datos de covid)
                         showAlert({
                             title:"El empleado existe",
                             message: "Desea vincular el empleado a la organización?",

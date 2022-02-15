@@ -1,3 +1,1 @@
-1. corregir la actualización de los usuarios ingresados despues de seed de la bbdd, solo falla despues del seed, una vez que cargo un usuario no falla mas.
-2. corregis el tema de la permenencia de las fotos.
-3. corregir el error de que cuando tengo un usuario cargado en una organizacion y lo busco para agregar datos de covid desde otra organizacion que ya esta vinvulado pero q recientemente lo vinculé a otra organizacion es como q se me desvincula de la organización anterior (tratar de que busque x dni y no x id en el for del homeContainer)
+1. corregis el tema de la permenencia de las fotos.

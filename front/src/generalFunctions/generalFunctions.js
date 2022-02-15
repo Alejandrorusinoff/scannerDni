@@ -1,10 +1,4 @@
-export function handleOp(boxUno, set1, set2, setRole, state1, state2, condition) {
-    if (!boxUno) {
-        set1(state1);
-        set2(state2);
-        setRole(condition);
-    }
-}
+import { useHandleYesOp, useHandleOp } from "../hooks/customHook"
 
 export function trunc (x, posiciones = 0) {
     var s = x.toString()
@@ -22,31 +16,6 @@ export function trunc (x, posiciones = 0) {
     var finalNum = entera + ((decimalFormated / Math.pow(10, posiciones))*(isNeg ? -1 : 1))
     return finalNum
 }
-
-export function suma(temp, setTemp, fn) {
-    if (temp < 42) {
-        const temp1 = temp + 0.1  
-        setTemp(fn(temp1, 1))
-    }
-}
-
-export function resta(temp, setTemp, fn) {
-    if (temp > 34) {
-        const temp1 = (temp - 0.1)
-        setTemp(fn(temp1, 1))
-    }
-}
-
-export function handleYesOp(checkboxState, setCheckboxState, setRole, positive, negative ) {
-    if (!checkboxState) {
-        setCheckboxState(!checkboxState);
-        setRole(positive);
-    }
-    else{
-        setCheckboxState(!checkboxState);
-        setRole(negative);
-    }
-};
 
 export function close(disp, set, set1, set2) {
     disp(set(''))
@@ -96,21 +65,23 @@ export function convertDni(dni) {
         }
     }
     return arrDNI
-} 
+}
 
-/* export function takePhoto (takePicture, dispatch, setImgEmployee, setImgCache) {
-    takePicture.then(data => {
-        dispatch(setImgEmployee(data.uri))
-        setImgCache(data.uri);
-    })
-    .catch(err => console.log(err))  
-} */
+export function checkBoxData1 (data) {
+    let datos = []
+    for (let i = 0; i < data.length; i++) {
+        let dat = data[i]
+        datos.push({'question': dat, 'hook': useHandleOp()})
+    }
+    return datos
+}
 
-/* const flash = () => {
-    if(!stateFlash){
-        setStateFlash(true)
+export function checkBoxData2 (data) {
+    let datos = []
+    for (let i = 0; i < data.length; i++) {
+        let dat = data[i]
+        datos.push({'question': dat, 'hook': useHandleYesOp()})
     }
-    else if(stateFlash){
-        setStateFlash(false)
-    }
-} */
+    return datos
+}
+

@@ -4,7 +4,6 @@ import userReducer from './user'
 import employeeReducer from './employee'
 import allPeopleReducer from './allPeople'
 import titleReducer from './title'
-import dataCovidReducer from './dataCovid'
 import imgEmployeeReducer from './imgEmployee'
 
 const store = configureStore({
@@ -14,7 +13,6 @@ const store = configureStore({
         employee: employeeReducer,
         allPeople: allPeopleReducer,
         title: titleReducer,
-        dataCovid: dataCovidReducer,
         imgEmployee: imgEmployeeReducer,
     }
 })
