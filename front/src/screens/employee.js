@@ -14,14 +14,14 @@ const Employee = ({employees, navigationSingleEmployee}) => {
             <TouchableOpacity onPress={()=> {navigationSingleEmployee(employee)}} style={styles.containerButton}>
                 <View style={styles.container1}>
                     {employee.photo?
-                    <Image
-                    style={styles.imgEmployee}
-                    source={{
-                    uri: employee.photo,
-                    }}
-                />
-                :
-                <Icon name="person" size={80} style={styles.img1}></Icon>
+                        <Image
+                        style={styles.imgEmployee}
+                        source={{
+                        uri: employee.photo,
+                        }}
+                        />
+                        :
+                        <Icon name="person" size={80} style={styles.img1}></Icon>
                     }  
                 </View>
                 <View style={{justifyContent: 'space-around',}}>
