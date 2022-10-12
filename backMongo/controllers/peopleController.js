@@ -20,7 +20,9 @@ module.exports = {
                 .then(empresa => {
                     EmployeeData.create({organizationId, photo, name, lastName, dni, age, diretion, organizationName})
                     .then(employee => {
+                        console.log('linea 23 ---> ', empresa.employees)
                         empresa.employees.push(employee)
+                        console.log('linea 25 ---> ', empresa.employees)
                         empresa.save()
                         res.send({msj:'Usuario creado y agregado a la organizacion', employee})
                     })

@@ -17,6 +17,7 @@ const LoginContainer = ({navigation}) => {
     function sendLogin({email,password}) {
         postLogin(lowerValidation(email), password)
         .then(({data}) => {
+            console.log('data ---> ', data)
             if (data === 'Usuario no encontrado') msjFlash(data, 'danger', 'danger')
             else {data.token ? dispatch(setUser({...data})) : msjFlash(data, 'danger', 'danger')}
         })

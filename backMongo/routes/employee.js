@@ -13,7 +13,7 @@ router.post('/organizationEmployee', checkJWT, peopleController.organizationEmpl
 router.post('/associateEmployee', checkJWT, peopleController.associateEmployee)
 
 //Buscar todos los empleados
-router.get('/searchAllEmployees', checkJWT, peopleController.allEmployee)
+router.get('/searchAllEmployees', /* checkJWT, */ peopleController.allEmployee)
 
 //Buscar empleado por DNI
 router.post('/searchEmployeeByDNI', checkJWT, peopleController.searchEmployeeDNI)

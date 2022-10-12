@@ -31,6 +31,7 @@ const EmployeeDataContainer = ({navigation, route}) => {
                 organizationId, 
                 user)
                 .then(({data}) => {
+                    console.log(data)
                     const employeeId = data.employee._id
                     dispatch(setEmployee([...employee, data.employee]))
                     navigation.navigate('CovidEmployeeData1Container',{dni, employeeId})

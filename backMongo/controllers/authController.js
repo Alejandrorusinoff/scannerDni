@@ -6,6 +6,7 @@ module.exports = {
     //Login
     login: function(req, res) {
         const {email, password} = req.body
+        console.log(email, password)
         Organization.findOne({email})
         .then(company => {
             if(!company) res.json("Usuario no encontrado")

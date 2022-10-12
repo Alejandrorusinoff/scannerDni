@@ -17,20 +17,14 @@ export function postAssociateEmployee(dni, user, idEmployee) {
             organizationId: user.company._id, 
             idEmployee
         }, 
-        {
-            headers: {authorization: `Bearer ${user.token}`}
-        },
+        {headers: {authorization: `Bearer ${user.token}`}},
     )
 }
 
 export function postOrganizationEmployee(user) {
     return axios.post(`http://localhost:3001/api/employee/organizationEmployee`,
-    {
-        organizationId: user.company._id
-    }, 
-    {
-        headers: {authorization: `Bearer ${user.token}`},
-    })
+    {organizationId: user.company._id}, 
+    {headers: {authorization: `Bearer ${user.token}`},})
 }
 
 export function postCovidData(temperature,smell,taste,cough,soreThroat,breathe,diarrhea,headache,vomits,musclePain,dni,employeeId,peopleCovid,lastDaysPeople,cancer,diabetes,liverDisease,chronicIllness,respiratoryDisease,heartDisease,lowDefenses, organizationId, user) {
@@ -102,8 +96,7 @@ export function postRegister(companyHeadquartes,companyName,description,diretion
 export function getSearchAllEmployeeCovidData(_id, user) {
     return axios.get(`http://localhost:3001/api/employee/searchAllEmployeeCovidData/${_id}`,
     {headers: {authorization: `Bearer ${user.token}`}},
-    )
-}
+)}
 
 export function postEmail(email) {
     return axios.post('http://localhost:3001/api/organization/login', {
@@ -114,10 +107,7 @@ export function postEmail(email) {
 export function updateEmployee(dni, uriImg, user) {
     if (uriImg) {
         return axios.put(`http://localhost:3001/api/employee/editEmployee/${dni}`,
-        {
-            photo: uriImg
-        },
-        {headers: {authorization: `Bearer ${user.token}`}},
-        ) 
-    }
+        {photo: uriImg},
+        {headers: {authorization: `Bearer ${user.token}`}},    
+    )}
 }

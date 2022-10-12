@@ -12,9 +12,13 @@ const ScanScreen = ({ route }) => {
     const searchEmployeeDNI = route.params.searchEmployeeDNI
     const onSuccess1 = e => {
         const arrDNI = convertDni(e.data)
+        console.log(`arrDNI ${arrDNI}`)
         setStateDate(arrDNI)
         searchEmployeeDNI({"BuscarEmpleado":arrDNI[4], arrDNI})
     };
+
+    let client = [ {msjA: [{ msj1: 'hola', option: 1 }, { msj2: 'hola1', option: 1 }] }, {msjB: [{ msj1: 'hola', option: 1 }, { msj2: 'hola2', option: 1 }] } ]
+    let tenant = [ {msjA: [{ msj1: 'hola', option: 1 }, { msj2: 'hola1', option: 1 }] }, {msjB: [{ msj1: 'hola', option: 1 }, { msj2: 'hola2', option: 1 }] } ]
 
     return (
         <View style={styles.container}>
@@ -43,3 +47,7 @@ const ScanScreen = ({ route }) => {
 }
 
 export default ScanScreen;
+
+
+
+
